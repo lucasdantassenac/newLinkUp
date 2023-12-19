@@ -30,11 +30,9 @@ export function Login() {
      return(<Text>carregando</Text>)     
   }else{
     return (
-      <ThemeProvider theme={theme}>
-        <SafeAreaView>
-          {session && session.user ?  <Profile key={session.user.id} session={session} /> : <Auth /> }
-        </SafeAreaView>
-      </ThemeProvider>
+      <SafeAreaView>
+        {session && session.user ?  <Profile key={session.user.id} session={session} /> : <Auth /> }
+      </SafeAreaView>
     )
   }
   

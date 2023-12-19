@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     buttonContainer:{
         flex:1,
         alignItems:'center',
-        marginTop:32
+        marginTop:32,
+        justifyContent:'center'
 
     },
     backButtonContainer:{
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
     backButton:{
         fontSize:18
     },
-    title:{
+    pageTitle:{
         color:"#504f4f",
         fontSize:32,
         fontWeight:'700',
@@ -47,17 +48,21 @@ export const styles = StyleSheet.create({
         padding:12
     },
     button:{
-        backgroundColor:'#504f4f',
-        alignSelf:"stretch",
-        justifyContent:'center',
-        alignItems:'center',
-        height:50,
-        borderRadius:25,
+        backgroundColor: '#5E5E5E',
+        color:"#fff",
+        padding: 10,
+        borderRadius: 30,
+        marginTop: 20,
+        marginBottom:10,
+        textAlign:'center',
+        maxWidth:350,
+        width:250,
     },
     buttonText:{
-        color:'#fff',
-        fontSize:18,
-        fontFamily:'Poppins'
+        color: 'white',
+        fontWeight: '400',
+        fontSize: 16,
+        textAlign:'center'
     },
     forgetPasswordText:{
         textAlign:'right'
