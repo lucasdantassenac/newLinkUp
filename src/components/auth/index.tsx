@@ -61,7 +61,7 @@ export default function Auth() {
          </Text>
       </View>
       <View style={styles.titleContainer}>
-        <Text>Entrar</Text>
+        <Text style={styles.pageTitle}>Entrar</Text>
       </View>
       <View style={styles.inputContainer} >
         <Text style={styles.label}>Matrícula ou CPF</Text>
@@ -92,13 +92,13 @@ export default function Auth() {
         <Button Text="Sign in" disabled={loading} onPress={() => signInWithEmail()} />
       </View> */}
       <View style={styles.buttonContainer}>
-        <Button 
+        <TouchableOpacity 
           disabled={loading}
           onPress={() => signInWithEmail()} 
           style={styles.button}
           >
             <Text style={styles.buttonText}>Entrar</Text>
-        </Button>
+        </TouchableOpacity>
       </View>
     </View>
   )

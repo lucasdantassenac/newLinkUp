@@ -27,8 +27,8 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={InitialScreen}  />
         <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
+        <Stack.Screen name="Home" component={InitialScreen}  />
         <Stack.Screen name="FriendsList" component={FriendList} />
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
         <Stack.Screen name="Cadastro" component={Cadastro} />
