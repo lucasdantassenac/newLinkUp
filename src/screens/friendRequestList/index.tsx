@@ -10,6 +10,7 @@ import {
   Alert,
   TextInput,
 } from 'react-native';
+import {styles} from './styles'
 
 type FriendRequest = {
   id: number;
@@ -130,86 +131,3 @@ export const FriendList: React.FC = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF', // Branco
-  },
-  searchBar: {
-    backgroundColor: '#4CAF50', // Verde
-    padding: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  searchInput: {
-    flex: 1,
-    backgroundColor: '#FFFFFF', // Branco
-    borderRadius: 5,
-    padding: 10,
-  },
-  tabButtons: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 10,
-    backgroundColor: '#4CAF50', // Verde
-  },
-  tabButton: {
-    flex: 1,
-    alignItems: 'center',
-    padding: 10,
-    borderRadius: 50,
-    backgroundColor: '#FFFFFF', // Branco
-    marginHorizontal: 5,
-  },
-  tabButtonText: {
-    color: '#4CAF50', // Verde
-  },
-  listContent: {
-    paddingHorizontal: 0,
-    paddingBottom: 20,
-  },
-  itemContainer: {
-    backgroundColor: '#4CAF50', // Verde
-    borderRadius: 1,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    marginBottom: 0,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  textContainer: {
-    flex: 1,
-    marginLeft: 20,
-  },
-  profilePic: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-  },
-  itemText: {
-    color: '#FFFFFF', // Branco
-    fontSize: 16,
-  },
-  itemButtonContainer: {
-    marginLeft: 20,
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-  },
-  button: {
-    paddingHorizontal: 15,
-    paddingVertical: 5,
-    borderRadius: 20,
-    marginBottom: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  acceptButton: {
-    backgroundColor: '#1A73E8', // Azul para aceitar
-  },
-  rejectButton: {
-    backgroundColor: '#FF4500', // Laranja para rejeitar
-  },
-  buttonText: {
-    color: '#FFFFFF', // Branco
-  },
-});
