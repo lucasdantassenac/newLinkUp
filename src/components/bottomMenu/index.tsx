@@ -5,7 +5,7 @@ import { Feed } from '../../screens/feed';
 import { Profile } from '../../screens/profile';
 import { Session } from '@supabase/supabase-js';
 import { ConfigureProfile } from '../../screens/configureProfile';
-import { FriendList } from '../../screens/friendList';
+import { FriendList } from '../../screens/friendRequestList';
 
 const Tab = createBottomTabNavigator();
 

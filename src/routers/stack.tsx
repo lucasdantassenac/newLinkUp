@@ -7,7 +7,7 @@ import Cadastro from '../screens/cadastro';
 import {InitialScreen} from '../screens/initialScreen';
 import {Login} from '../screens/login'
 import {ConfigureProfile} from '../screens/configureProfile'
-import { FriendList } from '../screens/friendList';
+import { FriendList } from '../screens/friendRequestList';
 import { Feed } from '../screens/feed';
 import { Profile } from '../screens/profile';
 
@@ -27,12 +27,12 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="FriendsList" component={FriendList} />
+        <Stack.Screen name="Feed" component={Feed}  />
         <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
         <Stack.Screen name="Home" component={InitialScreen}  />
-        <Stack.Screen name="FriendsList" component={FriendList} />
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
         <Stack.Screen name="Cadastro" component={Cadastro} />
-        <Stack.Screen name="Feed" component={Feed}  />
         <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
