@@ -1,22 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, SafeAreaViewm, Alert, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../routers/stack';
 import { styles } from './styles'
+import { supabase } from '../../lib/supabase'
+import { Session } from '@supabase/supabase-js'
+
 
 export default function Cadastro() {
     
     const navigation = useNavigation<StackTypes>();
+    const [loading, setLoading] = useState(true)
     const [textoInput, setTextoInput] = useState(''); 
-    const [botaoAtivo, setBotaoAtivo] = useState(false); 
+    const [botaoAtivo, setBotaoAtivo] = useState(true); 
+    const [email, setEmail] = useState('')
+    const [name, setName] = useState('')
+    const [password, setPassword] = useState('')
+
+
   
     const handleInputChange = (texto: string) => {
+
       setTextoInput(texto);
       
       setBotaoAtivo(texto.trim() !== '');
+    
     };
+
+    async function signInWithEmail() {
+      setLoading(true)
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      })
+  
+      if (error) Alert.alert(error.message)
+      setLoading(false)
+    }
+  
+    async function signUpWithEmail() {
+      setLoading(true)
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+      })
+  
+      if (error) Alert.alert(error.message)
+      if (!session) Alert.alert('Please check your inbox for email verification!')
+      setLoading(false)
+
+      const userId = session?.user.id;
+
+      const { error: userError } = await supabase
+        .from('users')
+        .insert([{ uid: userId, name: name}]);
+
+      if (userError) {
+        Alert.alert('Error adding user data:', userError.message);
+      } else {
+        console.log('User data added successfully to cadastrados!');
+        
+      }
+    }
 
   return (
     <View style={styles.container}>
@@ -36,18 +86,13 @@ export default function Cadastro() {
           </View>
           <View style={styles.teste}>
               <Text style={styles.cadastrotext}>Cadastro</Text>
-              <Text style={styles.inputtext}>Matrícula</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={handleInputChange}/>
-              <Text style={styles.inputtext}>CPF</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={handleInputChange}/>
               <Text style={styles.inputtext}>Nome de usuário</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={handleInputChange}/>
+              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setName(text)} value={name}/>
               <Text style={styles.inputtext}>E-mail</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={handleInputChange}/>
+              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setEmail(text)} value={email}/>
               <Text style={styles.inputtext}>Senha</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={handleInputChange}/>
-              <Text style={styles.inputtext}>Confirmar senha</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={handleInputChange}/>
+              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setPassword(text)} value={password}/>
+              
           </View>
 
           <TouchableOpacity 
@@ -58,12 +103,15 @@ export default function Cadastro() {
               ]
             } 
             disabled={
-              !botaoAtivo
+              loading
             } 
-            onPress={ () => navigation.navigate('FriendList')}
-            >
+            onPress={() => signUpWithEmail()}>
               <Text style={styles.avancar}>Avançar</Text>
           </TouchableOpacity>
+
+          
+        
+
         </View>
 
       </ScrollView>
