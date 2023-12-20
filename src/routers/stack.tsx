@@ -10,6 +10,7 @@ import {ConfigureProfile} from '../screens/configureProfile'
 import { FriendList } from '../screens/friendList';
 import { Feed } from '../screens/feed';
 import { Profile } from '../screens/profile';
+import { ChatScreen } from '../screens/chatScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ type Stacknavigation = {
     Login:undefined,
     ConfigureProfile:undefined,
     FriendList:undefined,
+    ChatScreen: undefined,
 }
 
 export type StackTypes = NativeStackNavigationProp<Stacknavigation>
@@ -27,13 +29,15 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
         <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
         <Stack.Screen name="Home" component={InitialScreen}  />
         <Stack.Screen name="FriendsList" component={FriendList} />
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Feed" component={Feed}  />
-        <Stack.Screen name="Login" component={Login} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
