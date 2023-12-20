@@ -5,17 +5,19 @@ export const styles = StyleSheet.create({
       backgroundColor: '#FFFFFF', // Branco
     },
     searchBar: {
-      backgroundColor: '#4CAF50', // Verde
+      backgroundColor: '#fff', // Verde
       padding: 10,
       flexDirection: 'row',
       alignItems: 'center',
     },
     searchInput: {
       flex: 1,
-      backgroundColor: '#FFFFFF', // Branco
+      backgroundColor: '#fff', // Branco
       borderRadius: 20,
       padding: 10,
       paddingHorizontal:24,
+      borderColor:'#000',
+      borderWidth:1
 
     },
     tabButtons: {
@@ -23,18 +25,19 @@ export const styles = StyleSheet.create({
       justifyContent: 'space-around',
       padding: 10,
       
-      backgroundColor: '#4CAF50', // Verde
+      
+      backgroundColor: '#fff', // Verde
     },
     tabButton: {
       flex: 1,
       alignItems: 'center',
       padding: 10,
       borderRadius: 50,
-      backgroundColor: '#FFFFFF', // Branco
+      backgroundColor: '#ddd',
       marginHorizontal: 5,
     },
     tabButtonText: {
-      color: '#000', // Verde
+      color:'#fff',
     },
     listContent: {
       paddingHorizontal: 0,
