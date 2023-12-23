@@ -7,7 +7,7 @@ export default {
       GRAY_500: '#29292E',
       GRAY_400: '#323238',
       GRAY_300: '#7C7C8A',
-      GRAY_200: '#C4C4CC',
+      GRAY_200: '#D1D1D1',
       GRAY_100: '#D9D9D9'
     },
     FONT_FAMILY: {
