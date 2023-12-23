@@ -29,6 +29,7 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Home" component={InitialScreen}  />
         <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
         <Stack.Screen name="Login" component={Login} />
@@ -36,7 +37,7 @@ export default function StackComponent() {
         <Stack.Screen name="FriendsList" component={FriendList} />
         <Stack.Screen name="Feed" component={Feed}  />
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

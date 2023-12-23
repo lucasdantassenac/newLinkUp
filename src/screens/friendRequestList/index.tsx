@@ -104,7 +104,7 @@ export const FriendList: React.FC = () => {
       <View style={styles.searchBar}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Pesquisar..."
+          placeholder="Acha.."
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
         />
