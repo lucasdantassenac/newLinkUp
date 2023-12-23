@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
       marginVertical:20,
     },
     searchBar: {
-      backgroundColor: '#fff', // Verde
+      backgroundColor: '#fff', 
       margin:10,
       horizontalPadding:50,
       flexDirection: 'row',
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     searchInput: {
       flex: 1,
       justifyContent:'space-between',
-      backgroundColor: '#fff', // Branco
+      backgroundColor: '#fff', 
       borderRadius: 20,
       padding: 10,
       paddingHorizontal:24,
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
       padding: 10,
       
       
-      backgroundColor: '#fff', // Verde
+      backgroundColor: '#fff', 
     },
     tabButton: {
       flex: 1,
@@ -57,7 +57,6 @@ export const styles = StyleSheet.create({
       marginHorizontal:20,
       marginTop:10,
       marginBottom:30,
-      width:'95%'
     },
     flatList:{
       height:'100%'
@@ -67,7 +66,7 @@ export const styles = StyleSheet.create({
       paddingBottom: 20,
     },
     itemContainer: {
-      backgroundColor: '#fff', // Verde
+      backgroundColor: '#fff', 
       borderRadius: 1,
       paddingHorizontal: 10,
       paddingVertical: 10,
@@ -115,6 +114,6 @@ export const styles = StyleSheet.create({
       color:'#000'
     },
     buttonText: {
-      color: '#FFFFFF', // Branco
+      color: '#FFFFFF', 
     },
   });

@@ -13,24 +13,24 @@ import {
 import {styles} from './styles'
 import { Divider, Icon } from 'react-native-elements';
 import theme from '../../theme';
-import { StatusBar } from 'expo-status-bar';
 
 type FriendRequest = {
   id: number;
   name: string;
   course: string;
+  interestId: number,
   profilePic: string;
 };
-type Course = {
+type Interest = {
   id:number, 
   name:string,
   members:number,
 }
 export const FriendList: React.FC = () => {
   const [friendRequests, setFriendRequests] = useState<FriendRequest[]>([]);
-  const {courses, setCourses} = useState<Course[]>([])
+  const [interests, setInterests] = useState<Interest[]>([])
   const [searchText, setSearchText] = useState<string>('');
-
+  const [currentFriendByInterest, setCurrentFriendByInterest] = useState<FriendRequest[]>([])
   // Adicione uma lista de solicitações de amigo de exemplo
   useEffect(() => {
     setFriendRequests([
@@ -38,49 +38,56 @@ export const FriendList: React.FC = () => {
         id: 1,
         name: 'João Jardim',
         course: 'Tecnologia da Informação',
+        interestId:1,
         profilePic: 'https://via.placeholder.com/50',
       },
       {
         id: 2,
         name: 'Luiz Felipe',
-        course: 'Tecnologia da Informação',
+        course: 'Tecnologia da informação',
+        interestId:1, 
         profilePic: 'https://via.placeholder.com/50',
       },
       {
         id: 3,
         name: 'Peterson Henrique',
-        course: 'Tecnologia da Informação',
+        course: 'Tecnologia da informação', 
+        interestId:1, 
         profilePic: 'https://via.placeholder.com/50',
       },
       {
         id: 4,
         name: 'Lucas Dantas',
         course: 'Enfermagem',
+        interestId:1,
         profilePic: 'https://via.placeholder.com/50',
       },
       {
         id: 5,
         name: 'Gabriel Modesto',
         course: 'Gastronomia',
+        interestId:1,
         profilePic: 'https://via.placeholder.com/50',
       },
       {
         id: 6,
         name: 'Gabriel Modesto',
         course: 'Gastronomia',
+        interestId:1,
         profilePic: 'https://via.placeholder.com/50',
       },
       {
         id: 7,
         name: 'Gabriel Modesto',
         course: 'Gastronomia',
+        interestId:1,
         profilePic: 'https://via.placeholder.com/50',
       },
     ]);
   }, []);
 
   useEffect(() => {
-    setCourses([
+    setInterests([
       {
         id:1,
         name:'TI e Informática',
@@ -88,11 +95,12 @@ export const FriendList: React.FC = () => {
       },
       {
         id:2,
-        name:'TI e Informática',
+        name:'Enfermagem',
         members:200
       },
     ])
   }, [])
+
   const acceptFriendRequest = (friendRequestId: number) => {
     setFriendRequests((prevState) => {
       return prevState.filter((item) => item.id !== friendRequestId);
@@ -130,7 +138,7 @@ export const FriendList: React.FC = () => {
       </View>
     </View>
   );
-
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.spacingContainer}>
@@ -155,14 +163,41 @@ export const FriendList: React.FC = () => {
           </TouchableOpacity>
         </View>
         <Divider  style={styles.divider}/>
-        <FlatList
+        {
+        interests.map((interest) => {
+          // Filtrar os amigos com o mesmo interestId
+          const friendsWithInterest = friendRequests.filter(
+            (friend) => friend.interestId === interest.id
+          ).slice(0, 3);
+
+          // Renderizar um FlatList para cada interesse
+          return (
+            <View key={interest.id}>
+              <Text >{interest.name}</Text>
+              <View>
+                <Text >Pessoas que você talvez conheça</Text>
+                <TouchableOpacity><Text>Ver todos</Text></TouchableOpacity>
+              </View>
+              <FlatList
+                data={friendsWithInterest}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id.toString()}
+                contentContainerStyle={styles.listContent}
+                style={styles.flatList}
+              />
+            </View>
+          );
+        })
+      }
+       
+        {/* <FlatList
           data={friendRequests}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.listContent}
           style={styles.flatList}
 
-        />
+        /> */}
 
       </View>
     </SafeAreaView>
