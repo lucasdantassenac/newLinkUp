@@ -52,7 +52,7 @@ export const FriendList: React.FC = () => {
         id: 3,
         name: 'Peterson Henrique',
         course: 'Tecnologia da informação', 
-        interestId:1, 
+        interestId:2, 
         profilePic: 'https://via.placeholder.com/50',
       },
       {
@@ -73,7 +73,7 @@ export const FriendList: React.FC = () => {
         id: 6,
         name: 'Gabriel Modesto',
         course: 'Gastronomia',
-        interestId:1,
+        interestId:2,
         profilePic: 'https://via.placeholder.com/50',
       },
       {
@@ -173,10 +173,14 @@ export const FriendList: React.FC = () => {
           // Renderizar um FlatList para cada interesse
           return (
             <View key={interest.id}>
-              <Text >{interest.name}</Text>
-              <View>
-                <Text >Pessoas que você talvez conheça</Text>
-                <TouchableOpacity><Text>Ver todos</Text></TouchableOpacity>
+              <View style={styles.interestsInfoContainer}>
+                <Text style={styles.interestTitle}>{interest.name}</Text>
+                <View style={styles.seeAllContainer}>
+                  <Text style={styles.peopleYouMayKnowText}>Pessoas que você talvez conheça</Text>
+                  <TouchableOpacity>
+                    <Text style={styles.seeAllButtonText}>Ver todos</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
               <FlatList
                 data={friendsWithInterest}

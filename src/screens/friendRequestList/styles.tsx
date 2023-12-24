@@ -65,6 +65,26 @@ export const styles = StyleSheet.create({
       paddingHorizontal: 0,
       paddingBottom: 20,
     },
+    interestsInfoContainer:{
+      marginVertical:10,
+      marginHorizontal:10
+    },
+    interestTitle:{
+      color:theme.COLORS.GRAY_700,
+      fontSize:theme.FONT_SIZE.LG,
+    },
+    seeAllContainer:{
+      flexDirection:'row',
+      justifyContent:'space-between'
+      
+    },
+    peopleYouMayKnowText:{
+      color:theme.COLORS.GRAY_700,
+    },
+    seeAllButtonText:{
+      fontSize:theme.FONT_SIZE.LG,
+      color:theme.COLORS.GRAY_700,
+    },
     itemContainer: {
       backgroundColor: '#fff', 
       borderRadius: 1,
