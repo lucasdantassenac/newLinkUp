@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, SafeAreaViewm, Alert, Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Alert, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../routers/stack';
@@ -107,6 +107,12 @@ export default function Cadastro() {
             } 
             onPress={() => signUpWithEmail()}>
               <Text style={styles.avancar}>Avançar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+           
+            onPress={() => signUpWithEmail()}>
+              <Text >Avançar</Text>
           </TouchableOpacity>
 
           
