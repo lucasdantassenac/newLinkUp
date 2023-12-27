@@ -1,0 +1,30 @@
+{
+    "meusCursos": [
+      {
+        "curso": "Técnico em Logística",
+        "turma": "2021.3",
+        "periodo": "fev 2021 - abr 2022",
+        "status": "Concluído",
+        "id": 1
+      },
+      {
+        "curso": "Técnico em Informática ",
+        "turma": "2022.3",
+        "periodo": "ago 2022 - fev 2024",
+        "status": "Cursando",
+        "id": 2
+      },
+      {
+        "curso": "Análise e Desenvolvimento de Sitemas",
+        "turma": "2024.1",
+        "periodo": "jan 2024 - jun 2026",
+        "status": "-",
+        "id": 3
+      }
+    ],
+    "infoSobre":[
+    {
+      "sobre": "Estudante do curso Técnico em Informática (voltado ao desenvolvimento web) na instituição de ensino SENAC onde busco se desenvolver como Desenvolvedor Front-end e aprender a cada dia mais sobre esta incrível área da tecnologia. Fascinado por criar interfaces agradáveis e intuitivas, um de meus principais objetivos também é a otimização de processos, a fim de oferecer ao usuário final uma melhor experiência."
+    }
+    ]
+  }
