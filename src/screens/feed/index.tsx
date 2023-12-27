@@ -38,7 +38,14 @@ export const Feed = () => {
 
   const renderPost = ({description, photoBase64Url='', likesQuantity, commentsQuantity, comments=['']} :Post) => {
     return (
-      <postCard description={post.post_description}/>
+      <postCard 
+        description={description}
+        photoBase64Url={photoBase64Url}
+        likesQuantity={likesQuantity}
+        commentsQuantity={commentsQuantity}
+        comments={comments}
+        />
+        
     );
   };
 
