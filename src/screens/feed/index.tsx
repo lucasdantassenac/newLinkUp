@@ -1,32 +1,65 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import { BottomMenu } from '../../components/bottomMenu';
+import { supabase } from '../../lib/supabase';
+import { Database } from '../../lib/database.types';
+import { postCard } from '../../components/postCard';
+import { Post } from '../../@types/posts';
 
 export const Feed = () => {
-  const [posts, setPosts] = useState([
-    { id: '1', username: 'user1', text: 'Post 1' },
-    { id: '2', username: 'user2', text: 'Post 2' },
-    { id: '3', username: 'user3', text: 'Post 3' },
-    // Adicione mais posts conforme necessário
-  ]);
+  const [fetchError, setFetchError] = useState<string>('')
+  const [posts, setPosts] = useState<any>(null)
+  
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const {data, error} = await supabase
+        .from('posts')
+        .select()
 
-  const renderPost = ({ item }:any) => {
+        if(error){
+          setFetchError("Não foi possível acessar os posts")
+          setPosts(null)
+          console.log(error)
+          return
+        }
+
+        if(data){
+          setPosts(data)
+          setFetchError('')
+        }
+      } 
+
+      fetchPosts()
+
+  }, [])
+
+
+ 
+
+  const renderPost = ({description, photoBase64Url='', likesQuantity, commentsQuantity, comments=['']} :Post) => {
     return (
-      <View style={styles.postContainer}>
-        <Text style={styles.username}>{item.username}</Text>
-        <Text>{item.text}</Text>
-      </View>
+      <postCard description={post.post_description}/>
     );
   };
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={posts}
-        renderItem={renderPost}
-        keyExtractor={(item) => item.id}
-      />
-      <BottomMenu/>
+      {fetchError && (<Text>{fetchError}</Text>)}
+      {posts && (
+        <View>
+          <FlatList
+                data={posts}
+                renderItem={renderPost}
+                keyExtractor={(post) => post.id.toString()}
+               
+          />
+          {/* {posts.map((post:any) => (
+            <Text key={post.id}>{post.posts_description}</Text>
+          ))} */}
+        </View>
+      )}
+
+      {/* <BottomMenu/> */}
     </View>
   );
 };
