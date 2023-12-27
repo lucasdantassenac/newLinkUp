@@ -1,0 +1,60 @@
+{
+  "curso": [
+    {
+      "nome": "Técnico em Informática", 
+      "value": "tec informatica",
+      "id": 1 
+    },
+    {
+      "nome": "Técnico em Logística", 
+      "value": "tec logistica",
+      "id": 2 
+    },
+    {
+      "nome": "Técnico em Gastronomia", 
+      "value": "tec gastronomia",
+      "id": 3
+    },
+    {
+      "nome": "Análise de Dados com BI", 
+      "value": "analise bi",
+      "id": 4
+    }
+  ],
+  "statusCurso": [
+    {
+      "status": "Cursando", 
+      "value": "cursando",
+      "id": 1 
+    },
+    {
+      "status": "Concluído", 
+      "value": "concluido",
+      "id": 2 
+    }
+  ],
+   "mesCurso": [
+    { "mes": "jan", "value": "jan", "id": 1 },
+    { "mes": "fev", "value": "fev", "id": 2 },
+    { "mes": "mar", "value": "mar", "id": 3 },
+    { "mes": "abr", "value": "abr", "id": 4 },
+    { "mes": "mai", "value": "mai", "id": 5 },
+    { "mes": "jun", "value": "jun", "id": 6 },
+    { "mes": "jul", "value": "jul", "id": 7 },
+    { "mes": "ago", "value": "ago", "id": 8 },
+    { "mes": "set", "value": "set", "id": 9 },
+    { "mes": "out", "value": "out", "id": 10 },
+    { "mes": "nov", "value": "nov", "id": 11 },
+    { "mes": "dez", "value": "dez", "id": 12 }
+  ],
+   "anoCurso": [
+    { "ano": "2022", "value": 2022, "id": 1 },
+    { "ano": "2023", "value": 2023, "id": 2 },
+    { "ano": "2024", "value": 2024, "id": 3 },
+    { "ano": "2025", "value": 2025, "id": 4 },
+    { "ano": "2026", "value": 2026, "id": 5 },
+    { "ano": "2027", "value": 2027, "id": 6 },
+    { "ano": "2028", "value": 2028, "id": 7 }
+  ]
+
+}
