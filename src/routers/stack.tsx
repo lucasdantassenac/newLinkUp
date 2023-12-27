@@ -29,15 +29,26 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="FriendsList" component={FriendList} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
+<<<<<<< HEAD
+=======
+        <Stack.Screen name="Home" component={InitialScreen}  />
+        <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
+>>>>>>> 26257ec10d8b08aba713a40af0d42c11ef848bbc
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
         <Stack.Screen name="ChatScreen" component={ChatScreen} />
+<<<<<<< HEAD
         <Stack.Screen name="Home" component={InitialScreen}  />
         <Stack.Screen name="FriendsList" component={FriendList} />
         <Stack.Screen name="Feed" component={Feed}  />
         <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
         
+=======
+        <Stack.Screen name="Feed" component={Feed}  />
+        <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
+>>>>>>> 26257ec10d8b08aba713a40af0d42c11ef848bbc
         
       </Stack.Navigator>
     </NavigationContainer>
