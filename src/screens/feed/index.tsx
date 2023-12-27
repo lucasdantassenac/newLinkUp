@@ -8,7 +8,7 @@ import { Post } from '../../@types/posts';
 
 export const Feed = () => {
   const [fetchError, setFetchError] = useState<string>('')
-  const [posts, setPosts] = useState<any>(null)
+  const [posts, setPosts] = useState<Post[]>([])
   
   useEffect(() => {
     const fetchPosts = async () => {
@@ -18,7 +18,7 @@ export const Feed = () => {
 
         if(error){
           setFetchError("Não foi possível acessar os posts")
-          setPosts(null)
+          setPosts([])
           console.log(error)
           return
         }
@@ -38,13 +38,13 @@ export const Feed = () => {
 
   const renderPost = ({description, photoBase64Url='', likesQuantity, commentsQuantity, comments=['']} :Post) => {
     return (
-      <postCard 
+      <postCard
         description={description}
         photoBase64Url={photoBase64Url}
         likesQuantity={likesQuantity}
         commentsQuantity={commentsQuantity}
         comments={comments}
-        />
+      />
         
     );
   };
@@ -58,7 +58,6 @@ export const Feed = () => {
                 data={posts}
                 renderItem={renderPost}
                 keyExtractor={(post) => post.id.toString()}
-               
           />
           {/* {posts.map((post:any) => (
             <Text key={post.id}>{post.posts_description}</Text>
