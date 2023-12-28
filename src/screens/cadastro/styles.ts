@@ -24,7 +24,8 @@ export const styles = StyleSheet.create({
       
     },
     inputtext: {
-      fontSize:16,
+      fontSize: 16,
+      paddingStart: 5
       
     },
   
@@ -80,5 +81,45 @@ export const styles = StyleSheet.create({
   
     buttonback: {
       flexDirection: 'row'
-    }
+    },
+
+    inputPicker:{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: 40,
+      width: '100%',
+      borderColor: '#D9D9D9',
+      borderWidth: 1,
+      borderRadius: 30,
+      color:'#5E5E5E',
+      marginBottom: 25
+    },
+
+    labelInput: {
+      width: 350,
+      fontSize: 18,
+      fontWeight: '600',
+      marginBottom: 10,
+      marginTop: 0,
+      // backgroundColor: 'tomato',
+      // fontFamily: 'Poppins_500Medium',
+      // fontFamily: defaultFonts.padrao1,
+      color: '#5E5E5E',
+      paddingLeft:5,
+    },
+    picker:{
+      height: 'auto',
+      width: '100%',
+      color:'#5E5E5E',
+      paddingStart: 10
+      
+    },
+
+    containerInput:{
+      // backgroundColor: 'yellow',
+      height: 90,
+      marginTop: 10,
+    },
+
   });

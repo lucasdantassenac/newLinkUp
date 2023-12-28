@@ -1,23 +1,65 @@
-import 'react-native-url-polyfill/auto'
+import 'react-native-url-polyfill/auto';
+import { supabase } from '../../lib/supabase';
 import React, { useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../routers/stack';
-import { SafeAreaView, StatusBar, View, Text, StyleSheet, Button, TouchableOpacity, ScrollView } from 'react-native'
-
+import { SafeAreaView, StatusBar, View, Text, StyleSheet, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins';
 import stylesProfile from './stylesProfile';
-
 import Icon from 'react-native-vector-icons/AntDesign';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
-
 import { styles } from '../consulta_matricula/styles';
 import data from './db.json';
+import { Session } from '@supabase/supabase-js';
+import { Alert } from 'react-native';
 
 
-export function ProfileUser() {
+export function ProfileUser({ session }: { session: Session }) {
   const navigation = useNavigation<StackTypes>()
   // const [fontsLoaded, fontsError] = useFonts({Poppins_700Bold, Poppins_400Regular, Poppins_500Medium})
   const [menuAtivo, setMenuAtivo] = useState('atividades');
+
+
+  const [loading, setLoading] = useState(true)
+  const [name, setName] = useState('')
+  const [lastname, setLastname] = useState('')
+  
+
+  useEffect(() => {
+    if (session) getProfile()
+  }, [session])
+
+  async function getProfile() {
+    try {
+      setLoading(true)
+      if (!session?.user) throw new Error('No user on the session!')
+
+      const { data, error, status } = await supabase
+        .from('users')
+        .select(`name, lastname`)
+        .eq('uid', session?.user.id)
+        .single()
+      if (error && status !== 406) {
+        throw error
+      }
+
+      if (data) {
+        setName(data.name)
+        setLastname(data.lastname)
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        Alert.alert(error.message)
+      }
+    } finally {
+      setLoading(false)
+    }
+  }
+
+
+
+
+
 
   const [cursoInfo, setCursoInfo] = useState<{
     curso: string;
@@ -136,7 +178,7 @@ export function ProfileUser() {
       <View style={stylesProfile.containerPrincipal}>
 
           <View style={stylesProfile.containerNav}>
-            <TouchableOpacity style={stylesProfile.buttonback}>
+            <TouchableOpacity style={stylesProfile.buttonback} onPress={() => supabase.auth.signOut()}>
               <Icon name='arrowleft' size={30} style={{fontWeight:'bold'}} />
               <Text style={stylesProfile.textback}>Voltar</Text>
             </TouchableOpacity>
@@ -150,7 +192,7 @@ export function ProfileUser() {
                 </View>
 
                 <View style={stylesProfile.perfilUsuarioInfo}>
-                  <Text style={stylesProfile.infoNome}>Gabriel Modesto</Text>
+                  <Text style={stylesProfile.infoNome}>{name} {lastname}</Text>
                   <Text style={stylesProfile.infoCurso}>Técnico em Informática</Text>
                 </View>
 
