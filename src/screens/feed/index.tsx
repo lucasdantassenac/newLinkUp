@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { BottomMenu } from '../../components/bottomMenu';
 import { supabase } from '../../lib/supabase';
 import { Database } from '../../lib/database.types';
 import { postCard } from '../../components/postCard';
 import { Post } from '../../@types/posts';
-
+import { styles } from './styles';
+import Icon from 'react-native-vector-icons/Entypo'
+import AntDesignIcon from 'react-native-vector-icons/AntDesign'
+import theme from '../../theme';
 export const Feed = () => {
   const [fetchError, setFetchError] = useState<string>('')
-  const [posts, setPosts] = useState<Post[]>([])
-  
+  const [posts, setPosts] = useState<any>(null)
+  const [fetchUserError, setFetchUserError] = useState<string>('')
+  const [users, setUsers] = useState<any>(null)
   useEffect(() => {
     const fetchPosts = async () => {
       const {data, error} = await supabase
@@ -18,7 +22,7 @@ export const Feed = () => {
 
         if(error){
           setFetchError("Não foi possível acessar os posts")
-          setPosts([])
+          setPosts(null)
           console.log(error)
           return
         }
@@ -33,35 +37,50 @@ export const Feed = () => {
 
   }, [])
 
+  const fetchUsers = async (userId:any) => {
+    const {data, error} = await supabase
+      .from('users')
+      .select()
+      .eq('id', userId)
 
- 
+      if(error){
+        setFetchUserError("Não foi possível carregar o usuário")
+        setUsers(null)
+        console.log(error)
+        return
+      }
 
-  const renderPost = ({description, photoBase64Url='', likesQuantity, commentsQuantity, comments=['']} :Post) => {
-    return (
-      <postCard
-        description={description}
-        photoBase64Url={photoBase64Url}
-        likesQuantity={likesQuantity}
-        commentsQuantity={commentsQuantity}
-        comments={comments}
-      />
-        
-    );
-  };
-
+      if(data){
+        setUsers(data)
+        setFetchUserError('')
+        return data
+      }
+  } 
+  const renderPost = (postItem:any) => {
+    const currentUser = fetchUsers(postItem.post_author)
+    return postCard(postItem.item, currentUser)
+  }
+  
+     
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity>
+          <Text>Link.UP</Text>
+          <AntDesignIcon name='down' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon name='chat' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
+        </TouchableOpacity>
+      </View>
       {fetchError && (<Text>{fetchError}</Text>)}
       {posts && (
         <View>
           <FlatList
-                data={posts}
-                renderItem={renderPost}
-                keyExtractor={(post) => post.id.toString()}
+            data={posts}
+            renderItem={post => renderPost(post.item)}
+            keyExtractor={(post) => post.id.toString()}
           />
-          {/* {posts.map((post:any) => (
-            <Text key={post.id}>{post.posts_description}</Text>
-          ))} */}
         </View>
       )}
 
@@ -70,23 +89,4 @@ export const Feed = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#f0f0f0',
-  },
-  postContainer: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-    backgroundColor: '#fff',
-  },
-  username: {
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-});
 
