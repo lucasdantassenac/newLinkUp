@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         marginTop:32
     },
     buttonContainer:{
-        flex:1,
+
         alignItems:'center',
         marginTop:32,
         justifyContent:'center'
@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
         color: 'white',
         fontWeight: '400',
         fontSize: 16,
-        textAlign:'center'
+        textAlign:'center',
     },
     forgetPasswordText:{
         textAlign:'right'

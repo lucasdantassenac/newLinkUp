@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, SafeAreaViewm, Alert, Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Alert, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../routers/stack';
 import { styles } from './styles'
 import { supabase } from '../../lib/supabase'
 import { Session } from '@supabase/supabase-js'
+import {Picker} from '@react-native-picker/picker';
 
 
 export default function Cadastro() {
@@ -17,7 +18,48 @@ export default function Cadastro() {
     const [botaoAtivo, setBotaoAtivo] = useState(true); 
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
+    const [courseName, setCourseName] = useState(['']);
+    const [courseNameSelected, setCourseNameSelected] = useState('');
+    const [lastname, setLastname] = useState('')
     const [password, setPassword] = useState('')
+
+
+    useEffect(() => {
+      fetchCourse();
+    }, []);
+
+
+    async function fetchCourse() {
+      try {
+        setLoading(true)
+  
+        const { data, error, status } = await supabase
+          .from('courses')
+          .select(`courseName` )
+
+        if (error && status !== 406) {
+          throw error
+        }
+  
+        if (data) {
+          const courseNames = data.map(course => course.courseName)
+          setCourseName(courseNames)
+
+          console.log(data)
+          
+          
+        }
+      } catch (error) {
+        if (error instanceof Error) {
+          Alert.alert(error.message)
+        }
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    
+
 
 
   
@@ -58,7 +100,7 @@ export default function Cadastro() {
 
       const { error: userError } = await supabase
         .from('users')
-        .insert([{ uid: userId, name: name}]);
+        .insert([{ uid: userId, name: name, lastname: lastname, courses: courseName}]);
 
       if (userError) {
         Alert.alert('Error adding user data:', userError.message);
@@ -86,8 +128,30 @@ export default function Cadastro() {
           </View>
           <View style={styles.teste}>
               <Text style={styles.cadastrotext}>Cadastro</Text>
-              <Text style={styles.inputtext}>Nome de usuário</Text>
+              <Text style={styles.inputtext}>Nome</Text>
               <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setName(text)} value={name}/>
+              <Text style={styles.inputtext}>Sobrenome</Text>
+              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setLastname(text)} value={lastname}/>
+              <Text style={styles.inputtext}>Nome do Curso</Text>
+                  <View style={styles.inputPicker}>
+                    <Picker 
+                    
+                      style={styles.picker}
+                      selectedValue={courseNameSelected}
+                      onValueChange={(itemValue) =>  setCourseNameSelected(itemValue)}
+                    >
+                        {Array.isArray(courseName) && courseName.map((course, index)=> (
+                       
+                        <Picker.Item label={course}  value={course} key={index.toString()} />
+                        
+                        
+                        ))}
+                    </Picker>
+                  </View>
+
+
+
+
               <Text style={styles.inputtext}>E-mail</Text>
               <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setEmail(text)} value={email}/>
               <Text style={styles.inputtext}>Senha</Text>
@@ -108,6 +172,20 @@ export default function Cadastro() {
             onPress={() => signUpWithEmail()}>
               <Text style={styles.avancar}>Avançar</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity 
+           
+            onPress={() => signUpWithEmail()}>
+              <Text >Avançar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+           
+            onPress={() => console.log(courseName)}>
+              <Text >Avançar</Text>
+          </TouchableOpacity>
+
+        
 
           
         

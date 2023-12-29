@@ -93,13 +93,16 @@ export default function Auth() {
       </View> */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity 
-          disabled={loading}
+          
           onPress={() => signInWithEmail()} 
           style={styles.button}
           >
             <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
+
+        
       </View>
+      
     </View>
   )
 }

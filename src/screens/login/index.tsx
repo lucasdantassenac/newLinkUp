@@ -4,13 +4,13 @@ import { supabase } from '../../lib/supabase'
 import Auth from '../../components/auth/'
 import {Profile} from '../profile/'
 import {AuthChat} from '../../components/authChat'
-
-import { SafeAreaView, StatusBar, View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native'
+import { SafeAreaView, StatusBar, View, Text, StyleSheet, Button, TouchableOpacity, ScrollView } from 'react-native'
 import { Session } from '@supabase/supabase-js'
-
 import { ThemeProvider } from 'styled-components'
 import { useFonts, Poppins_700Bold, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins';
 import theme from '../../theme'
+import { ChatScreen } from '../chatScreen'
+import {ProfileUser} from '../profileUser'
 
 
 export function Login() {
@@ -32,10 +32,19 @@ export function Login() {
      return(<Text>carregando</Text>)     
   }else{
     return (
-      <SafeAreaView>
-        {session && session.user ?  <AuthChat key={session.user.id} session={session} /> : <Auth /> }
-      </SafeAreaView>
+      <View style={styles.container}>
+        {session && session.user ?  <ProfileUser key={session.user.id} session={session} /> : <Auth /> }
+
+        </View>
+      
     )
   }
   
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    
+  }
+})

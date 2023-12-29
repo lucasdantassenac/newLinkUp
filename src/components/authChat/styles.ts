@@ -3,8 +3,11 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#ffff',
-      padding: 40
+      
+      backgroundColor: '#fff',
+      
+      
+      
       
     },
     areainput: {
@@ -20,12 +23,12 @@ export const styles = StyleSheet.create({
       height: 40,
       paddingStart: 10,
       marginTop: 2,
-      marginBottom: 25
       
     },
     inputtext: {
-      fontSize:16,
-      
+      fontSize:17,
+      marginTop: 45,
+      color: 'hsla(0, 0%, 37%, 1)'
     },
   
     button: {
@@ -56,20 +59,19 @@ export const styles = StyleSheet.create({
     },
   
     cadastrotext: {
-      fontSize:45,
-      marginBottom: 35,
+      fontSize: 45,
       color: '#5d5d5d'
     },
   
-    teste: {
-      marginBottom: 35
-    },
   
     back:{
       flexDirection: 'row',
+      justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: 100
-
+      
+      marginTop: -80,
+     
+      
     },
   
     textback: {
@@ -77,12 +79,57 @@ export const styles = StyleSheet.create({
       fontSize: 18
   
     },
-  
     buttonback: {
-      flexDirection: 'row'
+      marginRight: 75,
+      
+      
+    },
+
+    buscarInformacoesText:{
+        fontSize: 17
+
+    },
+
+    headerChat: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: '#e5e5e5',
+      paddingTop: 35,
+      paddingBottom: 10,
+      padding: 40
+      
+      
+      
+
     },
 
     photo: {
-      backgroundColor: '#111111'
+
+      backgroundColor:'black',
+      width:45,
+      height: 45,
+      borderRadius: 50,
+      marginRight: 20
+
+    },
+    photoandname:{
+      display: 'flex',
+      flexDirection:'row',
+      alignItems: 'center',
+      
+      
+      
+      
+    },
+
+    name:{
+
+      fontFamily:'Poppins_400Regular',
+      fontSize: 17
+
+      
     }
+
+    
   });
