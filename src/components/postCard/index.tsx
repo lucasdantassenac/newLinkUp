@@ -1,34 +1,41 @@
 import { Image, Text, View } from "react-native"
 import { Post } from "../../@types/posts"
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { styles } from "./styles";
+import { useEffect, useState } from "react";
+import { supabase } from "../../lib/supabase";
 
-export const postCard = ({description, photoBase64Url='', likesQuantity, commentsQuantity, comments=['']}:Post) => {
-    return (
+export const postCard = (
+  {
+    posts_description, 
+    posts_photobase64='', 
+    posts_like=0, 
+    posts_comment_quantity=0,
+  }:any,
+  currentUser:any
+) => {
+    console.log(currentUser)
+  return (
+      <View>
+        
+        <Text>{posts_description}</Text>
+        {posts_photobase64 &&  <Image style={styles.postCardImage} source={{uri: `${posts_photobase64}`}} />}
         <View>
-            <Text>{description}</Text>
-            {
-                photoBase64Url && 
-                <Image 
-                    source={{uri: `data:image/png;base64,${photoBase64Url}`}} 
-                />
-            }
+          <AntDesignIcon 
+              name='like2'
+              size={30}
+              color='black'
+          />
+          <Text>{posts_like || 0}</Text>
 
-            <View>
-                <AntDesignIcon 
-                    name='LikeOutlined'
-                    size={30}
-                    color='black'
-                />
-                <Text>{likesQuantity}</Text>
-
-                <AntDesignIcon 
-                    name='CommentOutlined'
-                    size={30}
-                    color='black'
-                />
-                <Text>{commentsQuantity}</Text>
-            </View>
+          <Icon 
+              name='comment-o'
+              size={30}
+              color='black'
+          />
+          <Text>{posts_comment_quantity || 0}</Text>
         </View>
-    )
-
+      </View>
+  )
 }

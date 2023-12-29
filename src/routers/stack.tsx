@@ -36,6 +36,7 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Feed" component={Feed}  />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="FriendsList" component={FriendList} />
@@ -44,7 +45,6 @@ export default function StackComponent() {
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
         <Stack.Screen name="ChatScreen" component={ChatScreen} />
         <Stack.Screen name="EditarCurso" component={EditarCurso} />
-        <Stack.Screen name="Feed" component={Feed}  />
         <Stack.Screen name="AdicionarCurso" component={AdicionarCurso}  />
         <Stack.Screen name="EditarSobre" component={EditarSobre}  />
         <Stack.Screen name="ProfileUser" component={ProfileUser}  />

@@ -13,53 +13,60 @@ export const Feed = () => {
   const [fetchError, setFetchError] = useState<string>('')
   const [posts, setPosts] = useState<any>(null)
   const [fetchUserError, setFetchUserError] = useState<string>('')
-  const [users, setUsers] = useState<any>(null)
+  const [users, setUsers] = useState<any>([])
+  
   useEffect(() => {
     const fetchPosts = async () => {
-      const {data, error} = await supabase
-        .from('posts')
-        .select()
-
-        if(error){
-          setFetchError("Não foi possível acessar os posts")
-          setPosts(null)
-          console.log(error)
-          return
+      try {
+        const { data: postsData, error: postsError } = await supabase
+          .from('posts')
+          .select();
+  
+        if (postsError) {
+          setFetchError("Não foi possível acessar os posts");
+          setPosts(null);
+          console.log(postsError);
+          return;
         }
-
-        if(data){
-          setPosts(data)
-          setFetchError('')
+  
+        if (postsData) {
+          const postsWithAuthors = [];
+          for (const post of postsData) {
+            const { data: userData, error: userError } = await supabase
+              .from('users')
+              .select()
+              .eq('id', post.posts_author)
+              .single();
+  
+            if (userError) {
+              setFetchUserError("Não foi possível carregar o usuário");
+              console.log(userError);
+              continue;
+            }
+  
+            if (userData) {
+              postsWithAuthors.push({
+                ...post,
+                author: userData, // Associando o autor ao post
+              });
+            }
+          }
+  
+          setPosts(postsWithAuthors);
+          setFetchError('');
         }
-      } 
-
-      fetchPosts()
-
-  }, [])
-
-  const fetchUsers = async (userId:any) => {
-    const {data, error} = await supabase
-      .from('users')
-      .select()
-      .eq('id', userId)
-
-      if(error){
-        setFetchUserError("Não foi possível carregar o usuário")
-        setUsers(null)
-        console.log(error)
-        return
+      } catch (e) {
+        console.error(e);
       }
-
-      if(data){
-        setUsers(data)
-        setFetchUserError('')
-        return data
-      }
-  } 
-  const renderPost = (postItem:any) => {
-    const currentUser = fetchUsers(postItem.post_author)
-    return postCard(postItem.item)
-  }
+    };
+  
+    fetchPosts();
+  }, []);
+  
+  const renderPost = ({ item: post }:any) => {
+    return postCard(post, post.author); // Passando o autor diretamente para o postCard
+  };
+  
   
      
   return (
@@ -78,7 +85,7 @@ export const Feed = () => {
         <View>
           <FlatList
             data={posts}
-            renderItem={post => renderPost(post.item)}
+            renderItem={(post) => renderPost(post)}
             keyExtractor={(post) => post.id.toString()}
           />
         </View>
