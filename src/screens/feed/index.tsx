@@ -1,53 +1,99 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { BottomMenu } from '../../components/bottomMenu';
-
+import { supabase } from '../../lib/supabase';
+import { Database } from '../../lib/database.types';
+import { postCard } from '../../components/postCard';
+import { Post } from '../../@types/posts';
+import { styles } from './styles';
+import Icon from 'react-native-vector-icons/Entypo'
+import AntDesignIcon from 'react-native-vector-icons/AntDesign'
+import theme from '../../theme';
 export const Feed = () => {
-  const [posts, setPosts] = useState([
-    { id: '1', username: 'user1', text: 'Post 1' },
-    { id: '2', username: 'user2', text: 'Post 2' },
-    { id: '3', username: 'user3', text: 'Post 3' },
-    // Adicione mais posts conforme necessário
-  ]);
-
-  const renderPost = ({ item }:any) => {
-    return (
-      <View style={styles.postContainer}>
-        <Text style={styles.username}>{item.username}</Text>
-        <Text>{item.text}</Text>
-      </View>
-    );
+  const [fetchError, setFetchError] = useState<string>('')
+  const [posts, setPosts] = useState<any>(null)
+  const [fetchUserError, setFetchUserError] = useState<string>('')
+  const [users, setUsers] = useState<any>([])
+  
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const { data: postsData, error: postsError } = await supabase
+          .from('posts')
+          .select();
+  
+        if (postsError) {
+          setFetchError("Não foi possível acessar os posts");
+          setPosts(null);
+          console.log(postsError);
+          return;
+        }
+  
+        if (postsData) {
+          const postsWithAuthors = [];
+          for (const post of postsData) {
+            const { data: userData, error: userError } = await supabase
+              .from('users')
+              .select()
+              .eq('id', post.posts_author)
+              .single();
+  
+            if (userError) {
+              setFetchUserError("Não foi possível carregar o usuário");
+              console.log(userError);
+              continue;
+            }
+  
+            if (userData) {
+              postsWithAuthors.push({
+                ...post,
+                author: userData, // Associando o autor ao post
+              });
+            }
+          }
+  
+          setPosts(postsWithAuthors);
+          setFetchError('');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+  
+    fetchPosts();
+  }, []);
+  
+  const renderPost = ({ item: post }:any) => {
+    return postCard(post, post.author); // Passando o autor diretamente para o postCard
   };
-
+  
+  
+     
   return (
     <View style={styles.container}>
-      <FlatList
-        data={posts}
-        renderItem={renderPost}
-        keyExtractor={(item) => item.id}
-      />
-      <BottomMenu/>
+      <View style={styles.header}>
+        <TouchableOpacity>
+          <Text>Link.UP</Text>
+          <AntDesignIcon name='down' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon name='chat' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
+        </TouchableOpacity>
+      </View>
+      {fetchError && (<Text>{fetchError}</Text>)}
+      {posts && (
+        <View>
+          <FlatList
+            data={posts}
+            renderItem={(post) => renderPost(post)}
+            keyExtractor={(post) => post.id.toString()}
+          />
+        </View>
+      )}
+
+      {/* <BottomMenu/> */}
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 10,
-    backgroundColor: '#f0f0f0',
-  },
-  postContainer: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-    backgroundColor: '#fff',
-  },
-  username: {
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-});
 
