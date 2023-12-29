@@ -58,7 +58,7 @@ export const Feed = () => {
   } 
   const renderPost = (postItem:any) => {
     const currentUser = fetchUsers(postItem.post_author)
-    return postCard(postItem.item, currentUser)
+    return postCard(postItem.item)
   }
   
      
