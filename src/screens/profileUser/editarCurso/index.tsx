@@ -9,8 +9,17 @@ import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../../routers/stack';
 import {Picker} from '@react-native-picker/picker';
 import data from './db.json';
+import { supabase } from '../../../lib/supabase';
+import { Session } from '@supabase/supabase-js';
 
 export function EditarCurso() {
+
+
+  
+
+ 
+
+  
   // const [fontsLoaded, fontsError] = useFonts({Poppins_700Bold, Poppins_400Regular, Poppins_500Medium})
   const navigation = useNavigation<StackTypes>()
   const [statusCurso, setStatusCurso] = useState('cursando');
@@ -20,6 +29,8 @@ export function EditarCurso() {
   const [anoInicio, setAnoInicio] = useState('');
   const [mesConclusao, setMesConclusao] = useState('');
   const [anoConclusao, setAnoConclusao] = useState('');
+
+
 
 // Nome do curso
 const [cursoNome, setCursoNome] = useState<{
