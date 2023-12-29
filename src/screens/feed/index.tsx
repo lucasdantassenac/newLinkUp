@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { BottomMenu } from '../../components/bottomMenu';
+
 import { supabase } from '../../lib/supabase';
-import { Database } from '../../lib/database.types';
 import { postCard } from '../../components/postCard';
 import { Post } from '../../@types/posts';
+import { useFonts, Poppins_700Bold, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins';
+
 import { styles } from './styles';
+
 import Icon from 'react-native-vector-icons/Entypo'
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
-import theme from '../../theme';
+import {theme} from '../../theme';
 export const Feed = () => {
+
   const [fetchError, setFetchError] = useState<string>('')
   const [posts, setPosts] = useState<any>(null)
   const [fetchUserError, setFetchUserError] = useState<string>('')
   const [users, setUsers] = useState<any>([])
+  
+
+
   
   useEffect(() => {
     const fetchPosts = async () => {
@@ -35,7 +42,7 @@ export const Feed = () => {
             const { data: userData, error: userError } = await supabase
               .from('users')
               .select()
-              .eq('id', post.posts_author)
+              .eq('id', post.author)
               .single();
   
             if (userError) {

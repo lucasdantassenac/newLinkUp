@@ -1,41 +1,57 @@
-import { Image, Text, View } from "react-native"
-import { Post } from "../../@types/posts"
+import { Image, Text, View, TouchableOpacity} from "react-native"
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import EntypoIcons from 'react-native-vector-icons/Entypo';
+
 import { styles } from "./styles";
-import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabase";
+import {theme} from "../../theme";
 
 export const postCard = (
   {
-    posts_description, 
-    posts_photobase64='', 
-    posts_like=0, 
-    posts_comment_quantity=0,
+    description, 
+    photobase64='', 
+    likesQuantity=0, 
+    commentsQuantity=0,
   }:any,
   currentUser:any
 ) => {
-    console.log(currentUser)
+ 
+  
   return (
-      <View>
-        
-        <Text>{posts_description}</Text>
-        {posts_photobase64 &&  <Image style={styles.postCardImage} source={{uri: `${posts_photobase64}`}} />}
+    <View>
+      <View style={styles.userContainer}>
+
+        <View style={styles.userInfoContainer}>
+          {currentUser.photobase64 &&  <Image style={styles.userImage} source={{uri: `${currentUser.photobase64}`}} />}
+          <View style={styles.userInfo}>
+            <Text style={styles.userName}>{currentUser.name}</Text>
+            <Text style={styles.userCourse}>{currentUser.courseName}</Text>
+          </View>
+        </View>
+
+        <TouchableOpacity style={styles.addButton}><Text style={styles.addButtonText}>Adicionar</Text></TouchableOpacity>
+        <TouchableOpacity><EntypoIcons name='dots-three-vertical' color={theme.COLORS.GRAY_700}/></TouchableOpacity>
+
+      </View>
+      <View style={styles.postContainer}>
+        <Text>{description}</Text>
+        {photobase64 &&  <Image style={styles.postCardImage} source={{uri: `${photobase64}`}} />}
         <View>
           <AntDesignIcon 
               name='like2'
               size={30}
               color='black'
           />
-          <Text>{posts_like || 0}</Text>
+          <Text>{likesQuantity || 0}</Text>
 
           <Icon 
               name='comment-o'
               size={30}
               color='black'
           />
-          <Text>{posts_comment_quantity || 0}</Text>
+          <Text>{commentsQuantity || 0}</Text>
         </View>
       </View>
+    </View>
   )
 }

@@ -1,4 +1,4 @@
-export default {
+export const theme =  {
     COLORS: {
       WHITE: '#FFFFFF',
   
@@ -8,7 +8,9 @@ export default {
       GRAY_400: '#323238',
       GRAY_300: '#7C7C8A',
       GRAY_200: '#D1D1D1',
-      GRAY_100: '#D9D9D9'
+      GRAY_100: '#D9D9D9',
+
+      LIME_GREEN:'#1EA0A1'
     },
     FONT_FAMILY: {
       REGULAR: 'Poppins_400Regular',
