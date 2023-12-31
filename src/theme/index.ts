@@ -19,7 +19,7 @@ export const theme =  {
     },
     FONT_SIZE: {
       VS:9,
-      SM: 13,
+      SM: 12,
       MD: 16,
       LG: 18,
       XL: 24,

@@ -79,7 +79,7 @@ export const Feed = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.logoContainer}>
           <Text>Link.UP</Text>
           <AntDesignIcon name='down' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
         </TouchableOpacity>
