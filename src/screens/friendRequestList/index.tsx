@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {styles} from './styles'
 import { Divider, Icon } from 'react-native-elements';
-import theme from '../../theme';
+import {theme} from '../../theme';
 
 type FriendRequest = {
   id: number;
