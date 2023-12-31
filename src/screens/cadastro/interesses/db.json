@@ -1,0 +1,49 @@
+{
+    "interesses": [
+      {
+        "curso": "Logística",
+        "id": 1
+      },
+      {
+        "curso": "Enfermagem",
+        "id": 2
+      },
+      {
+        "curso": "TI e Informática",
+        "id": 3
+      },
+      {
+        "curso": "Saúde",
+        "id": 4
+      },
+      {
+        "curso": "Moda",
+        "id": 5
+      },
+      {
+        "curso": "Beleza e bem-estar",
+        "id": 6
+      },
+      {
+        "curso": "Gastronomia",
+        "id": 7
+      },
+      {
+        "curso": "Educação",
+        "id": 8
+      },
+      {
+        "curso": "Fotografia",
+        "id": 9
+      },
+      {
+        "curso": "Audio visual",
+        "id": 10
+      },
+      {
+        "curso": "Design e decoração",
+        "id": 11
+      }
+      
+    ]
+  }
