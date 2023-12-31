@@ -52,9 +52,33 @@ export const styles = StyleSheet.create({
         flexDirection:'row'
     },
     postCardImage:{
-        width:100,
-        height:100,
-        borderRadius:5
+        width:'100%',
+        height:250,
+        borderRadius:5,
+        objectFit:'cover'
+    },
+    likeIconContainer:{
+        display:'flex',
+        flexDirection:'row',
+        marginRight:8
+    },
+    likeIcon:{
+
+    },
+    likesQuantity:{
+
+    },
+    commentIconContainer:{
+        display:'flex',
+        flexDirection:'row',
+        marginRight:8
+
+    },
+    commentIcon:{
+
+    },
+    commentsQuantity:{
+
     },
    
 })
