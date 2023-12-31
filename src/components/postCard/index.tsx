@@ -36,21 +36,29 @@ export const postCard = (
       <View style={styles.postContainer}>
         <Text style={styles.postDescription}>{description}</Text>
         {photobase64 &&  <Image style={styles.postCardImage} source={{uri: `${photobase64}`}} />}
+        
         <View style={styles.postInteractionContainer}>
-          <AntDesignIcon 
-              name='like2'
-              size={30}
-              color='black'
-          />
-          <Text>{likesQuantity || 0}</Text>
+          <View style={styles.likeIconContainer}>
+            <AntDesignIcon 
+                name='like2'
+                size={15}
+                color='black'
+                style={styles.likeIcon}
+            />
+            <Text style={styles.likesQuantity}>{likesQuantity || 0}</Text>
+          </View>
 
-          <Icon 
+          <View style={styles.commentIconContainer}>
+            <Icon 
               name='comment-o'
-              size={30}
+              size={15}
               color='black'
-          />
-          <Text>{commentsQuantity || 0}</Text>
+              style={styles.commentIcon}
+            />
+            <Text style={styles.commentsQuantity}>{commentsQuantity || 0}</Text>
+          </View>
         </View>
+
       </View>
     </View>
   )
