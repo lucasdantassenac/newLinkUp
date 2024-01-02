@@ -12,6 +12,7 @@ import { styles } from './styles';
 import Icon from 'react-native-vector-icons/Entypo'
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 import {theme} from '../../theme';
+import { Header } from '../../components/header';
 export const Feed = () => {
 
   const [fetchError, setFetchError] = useState<string>('')
@@ -78,15 +79,7 @@ export const Feed = () => {
      
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.logoContainer}>
-          <Text>Link.UP</Text>
-          <AntDesignIcon name='down' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name='chat' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
-        </TouchableOpacity>
-      </View>
+      <Header/>
       {fetchError && (<Text>{fetchError}</Text>)}
       {posts && (
         <View>
