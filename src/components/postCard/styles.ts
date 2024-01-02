@@ -25,16 +25,20 @@ export const styles = StyleSheet.create({
     },
     userInfo:{    },
     userName:{
-        fontSize:theme.FONT_SIZE.MD
+        fontSize:theme.FONT_SIZE.MD,
+
     },
     userCourse:{
-        fontSize:theme.FONT_SIZE.SM
+        fontSize:theme.FONT_SIZE.SM,
+        color:theme.COLORS.GRAY_700
     },
     addButton:{
         backgroundColor:theme.COLORS.LIME_GREEN,
         borderRadius:theme.BUTTONS.RADIUS,
         justifyContent:'center',
         width:100,
+        marginRight:5,
+        height:25
     },
     addButtonText:{
         color:theme.COLORS.WHITE,
@@ -44,18 +48,27 @@ export const styles = StyleSheet.create({
     postContainer:{
 
     },
+    postButtonsContainer:{
+        width:'20%',
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'flex-end'
+    },
     postDescription:{
-        marginVertical:10
+        marginTop:25,
+        marginBottom:10,
     },
     postInteractionContainer:{
         display:'flex',
-        flexDirection:'row'
+        flexDirection:'row',
+        marginTop:10
     },
     postCardImage:{
         width:'100%',
         height:250,
         borderRadius:5,
-        objectFit:'cover'
+        resizeMode:'contain'
     },
     likeIconContainer:{
         display:'flex',
@@ -63,7 +76,7 @@ export const styles = StyleSheet.create({
         marginRight:8
     },
     likeIcon:{
-
+        marginRight:5
     },
     likesQuantity:{
 
@@ -75,7 +88,7 @@ export const styles = StyleSheet.create({
 
     },
     commentIcon:{
-
+        marginRight:5
     },
     commentsQuantity:{
 
