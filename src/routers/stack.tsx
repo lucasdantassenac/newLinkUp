@@ -38,7 +38,7 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Feed" component={Interesses}  />
+        <Stack.Screen name="Feed" component={ConsultaMatricula}  />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="FriendsList" component={FriendList} />

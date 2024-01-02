@@ -65,7 +65,7 @@ useEffect(() => {
             
             <View style={stylesInteresses.containerInteresses}>
               {data.interesses.map((curso) => (
-                <TouchableOpacity style={stylesInteresses.buttonInteresse}>
+                <TouchableOpacity key={curso.id} style={stylesInteresses.buttonInteresse}>
                   <Text style={stylesInteresses.textButtonInteresse}>{curso.curso}</Text>
                 </TouchableOpacity>
               ))}
