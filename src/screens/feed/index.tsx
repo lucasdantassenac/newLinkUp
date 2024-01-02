@@ -54,7 +54,7 @@ export const Feed = () => {
             if (userData) {
               postsWithAuthors.push({
                 ...post,
-                author: userData, // Associando o autor ao post
+                author: userData, 
               });
             }
           }
@@ -71,7 +71,7 @@ export const Feed = () => {
   }, []);
   
   const renderPost = ({ item: post }:any) => {
-    return postCard(post, post.author); // Passando o autor diretamente para o postCard
+    return postCard(post, post.author); 
   };
   
   
