@@ -1,30 +1,25 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TouchableOpacity, View ,Image } from 'react-native';
- import { styles } from './styles';
-import { useState } from 'react';
-
-
-
+import { styles } from './styles';
 
 export  function ConfigureProfile ()  {
- 
-
-             // Configurações  //
-   
+// Configurações  //
  const profile= [
-        { id: 1,
-      
-        profilePhoto: '',
-        back: 'Voltar',
-        email: 'Gabriel Modesto',
-        email2: 'Gabriel_26@outlook.com.br' ,
-        config: 'Configurações' ,},
-    ] 
+    {
+      id: 1,
+      profilePhoto: '',
+      back: 'Voltar',
+      email: 'Gabriel Modesto',
+      email2: 'Gabriel_26@outlook.com.br' ,
+      config: 'Configurações' ,
+    },
+  ] 
 
          //         Conta       //
   const account= [
     { id: 1, account: 'Conta' },
-   ]
+  ]
   
   const botton = [
     { id: 1, texto: 'Editar perfil' },
@@ -41,7 +36,6 @@ export  function ConfigureProfile ()  {
      { id: 1, terms: 'Termos e políticas' },
     
   ]
-  
      
       //               Ações          // 
   const actions = [
@@ -54,121 +48,75 @@ export  function ConfigureProfile ()  {
   ]
   
   return (
-    
-    
-    
     <View style={styles.container}>
-    
-    {profile.map((foto) => (
-
-    <TouchableOpacity style = {styles.backButon}>
-        <Text style = {styles.backText}> {foto.back} </Text>
-    </TouchableOpacity>
-    
-))}
-    
-     {/*              Configurações          */}
-
-    <View>
-     {profile.map((foto) => (
-    
-   
-
-        <View style = {styles.profile} key={foto.id} >
-    
-        <Text style = {styles.config}> {foto.config} </Text>
-      
-      <Image
-        style={styles.profilephoto}
-        source={{
-          uri: 'https://via.placeholder.com/50',
-        }}
-      />
-              
-    <Text style = {styles.profileText}> {foto.email} </Text>
-    
-    <Text style = {styles.profileText2}> {foto.email2} </Text>
-              
-           
-       
-        </View>
-      ))}
-
-   </View>
-    
-    
-    
-              {/*             Conta           */}
-    
-    <View style = {styles.account}> 
-      { account.map((conta) => (
-        
-        <Text style = {styles.account}> {conta.account} </Text>
-      ))}  
-    </View>
-    
-     <View>
-      {botton.map((botao) => (
-     <TouchableOpacity style = {styles.button} key={botao.id} >
-             
-             <Text style = {styles.buttonText1}> {botao.texto} </Text>
+      {
+        profile.map((foto) => (
+        <TouchableOpacity style = {styles.backButon} key={foto.id}>
+            <Text style = {styles.backText}> {foto.back} </Text>
         </TouchableOpacity>
-      ))}
-    
+        ))
+      }
+
+      {/*              Configurações          */}
+      <View>
+        {profile.map((foto) => (
+          <View style = {styles.profile} key={foto.id} >
+            <Text style = {styles.config}> {foto.config} </Text>
+            <Image
+              style={styles.profilephoto}
+              source={{
+                uri: 'https://via.placeholder.com/50',
+              }}
+            />
+            <Text style = {styles.profileText}> {foto.email} </Text>
+            <Text style = {styles.profileText2}> {foto.email2} </Text>
+          </View>
+        ))}
+      </View>
+      {/*             Conta           */}
+      <View style = {styles.account}> 
+        { account.map((conta) => (
+          <Text style = {styles.account}> {conta.account} </Text>
+        ))}  
+      </View>
+     <View>
+        {botton.map((botao) => (
+        <TouchableOpacity style = {styles.button} key={botao.id} >
+            <Text style = {styles.buttonText1}> {botao.texto} </Text>
+        </TouchableOpacity>
+        ))}
     </View>
-   
      {/*               Suporte                 */}
      
-     <View style = {styles.
-support}> 
+     <View style = {styles.support}> 
       { support.map((suporte) => (
-        
-        <Text style = {styles.
-            support}> {suporte. support} </Text>
+        <Text style = {styles.support}>{suporte. support} </Text>
       ))}  
     </View>
-  
-  
-  
+    
     <View>
      {terms.map((suporte) => (
-     <TouchableOpacity style = {styles.terms} key={suporte.id} >
-             
-             <Text style = {styles.buttonText1}> {suporte.terms} </Text>
+        <TouchableOpacity style = {styles.terms} key={suporte.id} >
+          <Text style = {styles.buttonText1}> {suporte.terms} </Text>
         </TouchableOpacity>
       ))}
-
    </View>
-     
-     
-     {/*                Ações           */}
 
-
+    {/*                Ações           */}
      <View style = {styles.acoes}> 
       { actions.map((acoes) => (
-        
         <Text style = {styles.acoes}> {acoes.actions} </Text>
       ))}  
     </View>
-  
-  
-  
     <View>
      {exit.map((sair) => (
-     <TouchableOpacity style = {styles.exit} key={sair.id} >
-             
-             <Text style = {styles.buttonText1}> {sair.exit} </Text>
-        </TouchableOpacity>
+      <TouchableOpacity style = {styles.exit} key={sair.id} >
+          <Text style = {styles.buttonText1}> {sair.exit} </Text>
+      </TouchableOpacity>
       ))}
 
-   </View>
-  
-  
-  
+    </View>
   </View>
-  
-  
-  
   );
 };
 
