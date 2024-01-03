@@ -16,42 +16,38 @@ const Tab = createBottomTabNavigator();
 export default function TabRoutes(){
     return(
         <Tab.Navigator screenOptions={{ headerShown: false}}>
-    
-    <Tab.Screen 
-    name="Lu"
-    component={Feed}
-    options={{
-        tabBarIcon: ({color , size}) => <Feather name="home" color={color} size ={size}/>
-    }}
-    
-    />
-  
-    <Tab.Screen 
-    name="list"
-    component={FriendList}
-    options={{
-    tabBarIcon: ({color , size}) => <Feather name="users" color={color} size ={size}/>
-    }}
-    />
-   
-   
-    <Tab.Screen 
-    name="Config"
-    component={ConfigureProfile}
-    options={{
-        tabBarIcon: ({color , size}) => <Feather name="settings" color={color} size ={size}/>
-    }}
-   
-   />
-     <Tab.Screen 
-    name="profile"
-    component={Interesses}
-    options={{
-        tabBarIcon: ({color , size}) => <Feather name="user" color={color} size ={size}/>
-    }}
-    />
-   
-     
+            <Tab.Screen 
+                name="Home"
+                component={Feed}
+                options={{
+                    tabBarIcon: ({color , size}) => <Feather name="home" color={color} size ={size}/>
+                }}
+            />
+        
+            <Tab.Screen 
+                name="Solicitações"
+                component={FriendList}
+                options={{
+                    tabBarIcon: ({color , size}) => <Feather name="users" color={color} size ={size}/>
+                }}
+            />
+        
+        
+            <Tab.Screen 
+                name="Configurações"
+                component={ConfigureProfile}
+                options={{
+                    tabBarIcon: ({color , size}) => <Feather name="settings" color={color} size ={size}/>
+                }}
+            />
+
+            <Tab.Screen 
+                name="Perfil"
+                component={Interesses}
+                options={{
+                    tabBarIcon: ({color , size}) => <Feather name="user" color={color} size ={size}/>
+                }}
+            />
         </Tab.Navigator>
     )
 }   
