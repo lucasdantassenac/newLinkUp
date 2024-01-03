@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View ,Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View ,Image, ScrollView } from 'react-native';
 import { styles } from './styles';
 
 export  function ConfigureProfile ()  {
