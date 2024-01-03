@@ -1,9 +1,8 @@
 import React from 'react';
-import { Image, Text, View, TouchableOpacity} from "react-native"
+import {Text, View, TouchableOpacity} from "react-native"
 
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 import Icon from 'react-native-vector-icons/Entypo'
-import EntypoIcons from 'react-native-vector-icons/Entypo';
 
 import { styles } from "./styles";
 import {theme} from "../../theme";
@@ -18,6 +17,7 @@ export const Header = () => {
             
             <TouchableOpacity style={styles.chatIconContainer}>
                 <Icon name='chat' color={theme.COLORS.GRAY_700} style={styles.chatIcon}/>
+                <Text style={styles.upText}>Up</Text>
             </TouchableOpacity>
         </View>
     )

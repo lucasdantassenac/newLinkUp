@@ -22,7 +22,15 @@ export const styles = StyleSheet.create({
 
     },
     chatIconContainer:{
-
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    upText:{
+        color:theme.COLORS.WHITE,
+        fontSize:8,
+        marginLeft:-12,
+        marginTop:-8,
     },
     chatIcon:{
         fontSize:20
