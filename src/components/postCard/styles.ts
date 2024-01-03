@@ -36,14 +36,17 @@ export const styles = StyleSheet.create({
         backgroundColor:theme.COLORS.LIME_GREEN,
         borderRadius:theme.BUTTONS.RADIUS,
         justifyContent:'center',
-        width:100,
+        width:80,
         marginRight:5,
-        height:25
+        height:35
     },
     addButtonText:{
         color:theme.COLORS.WHITE,
         textAlign:'center',
         fontSize:theme.FONT_SIZE.SM,
+    },
+    dotsIcon:{
+        fontSize:21
     },
     postContainer:{
 
@@ -58,6 +61,7 @@ export const styles = StyleSheet.create({
     postDescription:{
         marginTop:25,
         marginBottom:10,
+        color:theme.COLORS.GRAY_700
     },
     postInteractionContainer:{
         display:'flex',
