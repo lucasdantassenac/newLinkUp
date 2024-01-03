@@ -9,13 +9,25 @@ export const styles = StyleSheet.create({
     },
     header:{
         display:'flex',
-        flexDirection:'row'
+        flexDirection:'row',
+        justifyContent:'space-between'
     },
     logoContainer:{
         display:'flex',
-        flexDirection:'row'
+        flexDirection:'row',
+        alignItems:'center'
+    },
+    logoText:{
+        fontSize:theme.FONT_SIZE.MD,
+        marginRight:5
+    },
+    arrowDownIcon:{
+
+    },
+    chatIconContainer:{
+
     },
     chatIcon:{
-        
+        fontSize:20
     },
 })
