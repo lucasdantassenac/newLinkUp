@@ -1,3 +1,4 @@
+import React from 'react';
 import { Image, Text, View, TouchableOpacity} from "react-native"
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 import Icon from 'react-native-vector-icons/Octicons';
@@ -28,16 +29,18 @@ export const postCard = (
             <Text style={styles.userCourse}>{currentUser.courseName}</Text>
           </View>
         </View>
+
         <View style={styles.postButtonsContainer}>
           <TouchableOpacity style={styles.addButton}>
             <Text style={styles.addButtonText}>Adicionar</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            <EntypoIcons name='dots-three-vertical' color={theme.COLORS.GRAY_700}/>
+            <EntypoIcons name='dots-three-vertical' color={theme.COLORS.GRAY_700} style={styles.dotsIcon}/>
           </TouchableOpacity>
         </View>
 
       </View>
+
       <View style={styles.postContainer}>
         <Text style={styles.postDescription}>{description}</Text>
         {photobase64 &&  <Image style={styles.postCardImage} source={{uri: `${photobase64}`}} />}
