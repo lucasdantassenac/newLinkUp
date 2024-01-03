@@ -22,11 +22,12 @@ export const styles = StyleSheet.create({
     userInfoContainer:{
         display:'flex',
         flexDirection:'row',
+        alignItems:'center'
     },
     userInfo:{    },
     userName:{
-        fontSize:theme.FONT_SIZE.MD,
-
+        fontSize:theme.FONT_SIZE.MD,    
+        color:theme.COLORS.GRAY_700
     },
     userCourse:{
         fontSize:theme.FONT_SIZE.SM,

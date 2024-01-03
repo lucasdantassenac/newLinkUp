@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
         color:theme.COLORS.WHITE,
         fontSize:8,
         marginLeft:-12,
-        marginTop:-8,
+        marginTop:-9,
     },
     chatIcon:{
         fontSize:20
