@@ -5,18 +5,8 @@ import React from 'react';
 
 export default function Routes(){
     return (
-     
         <NavigationContainer>
-            
-            
-   
-                 <TabRoutes/> 
-         
-         
-      
+            <TabRoutes/> 
         </NavigationContainer>
-
-
-
     )
 }

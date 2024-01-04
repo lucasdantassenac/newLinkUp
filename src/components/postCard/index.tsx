@@ -1,6 +1,7 @@
+import React from 'react';
 import { Image, Text, View, TouchableOpacity} from "react-native"
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Octicons';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 
 import { styles } from "./styles";
@@ -29,10 +30,17 @@ export const postCard = (
           </View>
         </View>
 
-        <TouchableOpacity style={styles.addButton}><Text style={styles.addButtonText}>Adicionar</Text></TouchableOpacity>
-        <TouchableOpacity><EntypoIcons name='dots-three-vertical' color={theme.COLORS.GRAY_700}/></TouchableOpacity>
+        <View style={styles.postButtonsContainer}>
+          <TouchableOpacity style={styles.addButton}>
+            <Text style={styles.addButtonText}>Adicionar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <EntypoIcons name='dots-three-vertical' color={theme.COLORS.GRAY_700} style={styles.dotsIcon}/>
+          </TouchableOpacity>
+        </View>
 
       </View>
+
       <View style={styles.postContainer}>
         <Text style={styles.postDescription}>{description}</Text>
         {photobase64 &&  <Image style={styles.postCardImage} source={{uri: `${photobase64}`}} />}
@@ -40,7 +48,7 @@ export const postCard = (
         <View style={styles.postInteractionContainer}>
           <View style={styles.likeIconContainer}>
             <AntDesignIcon 
-                name='like2'
+                name='hearto'
                 size={15}
                 color='black'
                 style={styles.likeIcon}
@@ -50,7 +58,7 @@ export const postCard = (
 
           <View style={styles.commentIconContainer}>
             <Icon 
-              name='comment-o'
+              name='comment'
               size={15}
               color='black'
               style={styles.commentIcon}

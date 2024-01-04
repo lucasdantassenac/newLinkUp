@@ -22,40 +22,58 @@ export const styles = StyleSheet.create({
     userInfoContainer:{
         display:'flex',
         flexDirection:'row',
+        alignItems:'center'
     },
     userInfo:{    },
     userName:{
-        fontSize:theme.FONT_SIZE.MD
+        fontSize:theme.FONT_SIZE.MD,    
+        color:theme.COLORS.GRAY_700
     },
     userCourse:{
-        fontSize:theme.FONT_SIZE.SM
+        fontSize:theme.FONT_SIZE.SM,
+        color:theme.COLORS.GRAY_700
     },
     addButton:{
         backgroundColor:theme.COLORS.LIME_GREEN,
         borderRadius:theme.BUTTONS.RADIUS,
         justifyContent:'center',
-        width:100,
+        width:80,
+        marginRight:5,
+        height:35
     },
     addButtonText:{
         color:theme.COLORS.WHITE,
         textAlign:'center',
         fontSize:theme.FONT_SIZE.SM,
     },
+    dotsIcon:{
+        fontSize:21
+    },
     postContainer:{
 
     },
+    postButtonsContainer:{
+        width:'20%',
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'flex-end'
+    },
     postDescription:{
-        marginVertical:10
+        marginTop:25,
+        marginBottom:10,
+        color:theme.COLORS.GRAY_700
     },
     postInteractionContainer:{
         display:'flex',
-        flexDirection:'row'
+        flexDirection:'row',
+        marginTop:10
     },
     postCardImage:{
         width:'100%',
         height:250,
         borderRadius:5,
-        objectFit:'cover'
+        resizeMode:'contain'
     },
     likeIconContainer:{
         display:'flex',
@@ -63,7 +81,7 @@ export const styles = StyleSheet.create({
         marginRight:8
     },
     likeIcon:{
-
+        marginRight:5
     },
     likesQuantity:{
 
@@ -75,7 +93,7 @@ export const styles = StyleSheet.create({
 
     },
     commentIcon:{
-
+        marginRight:5
     },
     commentsQuantity:{
 

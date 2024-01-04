@@ -18,51 +18,50 @@ export default function TabRoutes(){
     return(
         <Tab.Navigator screenOptions={{ headerShown: false}}>
     
-    <Tab.Screen 
-    name="Feed"
-    component={Feed}
-    options={{
-        tabBarIcon: ({color , size}) => <Feather name="home" color={color} size ={size}/>
-    }}
-    
-    />
-  
-    <Tab.Screen 
-    name="List"
-    component={FriendList}
-    options={{
-    tabBarIcon: ({color , size}) => <Feather name="users" color={color} size ={size}/>
-    }}
-    />
-    
-    <Tab.Screen 
-    name="Novo"
-    component={Postagem}
-    options={{
-    tabBarLabel: '',
-        tabBarIcon: ({color , size}) => (
-        <ButtonNew  color={color} size= {size}/>
-    )
-    }}
-    />
-   
-   
-    <Tab.Screen 
-    name="Config"
-    component={ConfigureProfile}
-    options={{
-        tabBarIcon: ({color , size}) => <Feather name="settings" color={color} size ={size}/>
-    }}
-   
-   />
-     <Tab.Screen 
-    name="profile"
-    component={Interesses}
-    options={{
-        tabBarIcon: ({color , size}) => <Feather name="user" color={color} size ={size}/>
-    }}
-    />
-   
+          <Tab.Screen 
+            name="Feed"
+            component={Feed}
+            options={{
+                tabBarIcon: ({color , size}) => <Feather name="home" color={color} size ={size}/>
+            }}
+
+          />
+
+          <Tab.Screen 
+            name="List"
+            component={FriendList}
+            options={{
+            tabBarIcon: ({color , size}) => <Feather name="users" color={color} size ={size}/>
+            }}
+          />
+
+          <Tab.Screen 
+            name="Novo"
+            component={Postagem}
+            options={{
+            tabBarLabel: '',
+                tabBarIcon: ({color , size}) => (
+                <ButtonNew  color={color} size= {size}/>
+            )
+            }}
+          />
+
+
+          <Tab.Screen 
+            name="Config"
+            component={ConfigureProfile}
+            options={{
+                tabBarIcon: ({color , size}) => <Feather name="settings" color={color} size ={size}/>
+            }}
+
+         />
+           <Tab.Screen 
+              name="profile"
+              component={Interesses}
+              options={{
+                  tabBarIcon: ({color , size}) => <Feather name="user" color={color} size ={size}/>
+              }}
+          />
      
         </Tab.Navigator>
     )

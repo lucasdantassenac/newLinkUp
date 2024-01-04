@@ -30,9 +30,9 @@ export const styles = StyleSheet.create({
     },
   
     button: {
+      backgroundColor: '#000',
       alignItems: 'center',
       justifyContent: 'center',
-      
       borderRadius: 50,
       height: 40,
       width: 110,
@@ -41,9 +41,6 @@ export const styles = StyleSheet.create({
       
     },
   
-    botaoAtivo:{
-      backgroundColor: '#000'
-    },
   
     botaoInativo:{
           backgroundColor: '#000',
