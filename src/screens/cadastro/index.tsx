@@ -100,7 +100,7 @@ export default function Cadastro() {
 
       const { error: userError } = await supabase
         .from('users')
-        .insert([{ uid: userId, name: name, lastname: lastname, courses: courseName}]);
+        .insert([{ uid: userId, name: name, lastname: lastname, courseName: courseNameSelected}]);
 
       if (userError) {
         Alert.alert('Error adding user data:', userError.message);
@@ -161,28 +161,13 @@ export default function Cadastro() {
 
           <TouchableOpacity 
             style={
-              [
-                styles.button, 
-                botaoAtivo ? styles.botaoAtivo : styles.botaoInativo
-              ]
+                styles.button 
             } 
             disabled={
               loading
             } 
             onPress={() => signUpWithEmail()}>
               <Text style={styles.avancar}>Avançar</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity 
-           
-            onPress={() => signUpWithEmail()}>
-              <Text >Avançar</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity 
-           
-            onPress={() => console.log(courseName)}>
-              <Text >Avançar</Text>
           </TouchableOpacity>
 
         
