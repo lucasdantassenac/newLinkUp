@@ -23,6 +23,7 @@ import  { Teste  }  from '../screens/teste';
 
 
 import { Interesses } from '../screens/cadastro/interesses';
+import { Postagem } from '../screens/postagem';
 
 
 
@@ -49,7 +50,8 @@ type Stacknavigation = {
     InitialScreen: undefined,
     Interesses: undefined,
     Teste: undefined,
-}
+    Postagem: undefined,
+
 
 export type StackTypes = NativeStackNavigationProp<Stacknavigation>
 
@@ -101,7 +103,22 @@ export default function StackComponent() {
   return (
       <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+
         <Stack.Screen name="InitialScreen" component={InitialScreen} />
+        <Stack.Screen name="Postagem" component={Postagem}  />
+        <Stack.Screen name="Teste" component={Teste} />
+        <Stack.Screen name="FriendList" component={FriendList} />
+        <Stack.Screen name="UserProfile" component={UserProfile} /> 
+        <Stack.Screen name="ProfileUser" component={ProfileUser}  />
+        <Stack.Screen name="EditarSobre" component={EditarSobre}  />
+        <Stack.Screen name="AdicionarCurso" component={AdicionarCurso}  />
+        <Stack.Screen name="EditarCurso" component={EditarCurso} />
+        <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
+        <Stack.Screen name="Feed" component={Feed}  />
+        <Stack.Screen name="Interesses" component={Interesses}  />
+        <Stack.Screen name="FirstRegister" component={ConsultaMatricula}  />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Home" component={InitialScreen}  />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="TabRoutes" component={TabRoutes} />
