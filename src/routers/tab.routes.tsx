@@ -8,7 +8,8 @@ import { FriendList } from '../screens/friendRequestList';
 import { EditarSobre } from '../screens/profileUser/editarSobre';
 import { Interesses } from '../screens/cadastro/interesses';
 import React from 'react';
-
+import ButtonNew from './ButtonNew';
+import { Postagem } from '../screens/postagem';
 
 
 const Tab = createBottomTabNavigator();
@@ -18,7 +19,7 @@ export default function TabRoutes(){
         <Tab.Navigator screenOptions={{ headerShown: false}}>
     
     <Tab.Screen 
-    name="Lu"
+    name="Feed"
     component={Feed}
     options={{
         tabBarIcon: ({color , size}) => <Feather name="home" color={color} size ={size}/>
@@ -27,10 +28,21 @@ export default function TabRoutes(){
     />
   
     <Tab.Screen 
-    name="list"
+    name="List"
     component={FriendList}
     options={{
     tabBarIcon: ({color , size}) => <Feather name="users" color={color} size ={size}/>
+    }}
+    />
+    
+    <Tab.Screen 
+    name="Novo"
+    component={Postagem}
+    options={{
+    tabBarLabel: '',
+        tabBarIcon: ({color , size}) => (
+        <ButtonNew  color={color} size= {size}/>
+    )
     }}
     />
    
