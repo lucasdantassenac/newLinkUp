@@ -1,7 +1,7 @@
 import 'react-native-url-polyfill/auto';
 import { supabase } from '../../lib/supabase';
 import React, { useState, useEffect } from 'react'
-import { useNavigation, RouteProp } from '@react-navigation/native';
+import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { StackTypes } from '../../routers/stack';
 import { SafeAreaView, StatusBar, View, Text, StyleSheet, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { useFonts, Poppins_700Bold, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins';
@@ -12,10 +12,28 @@ import { styles } from '../consulta_matricula/styles';
 import data from './db.json';
 import { Session } from '@supabase/supabase-js';
 import { Alert } from 'react-native';
-import {FriendList } from '../friendList';
 
 
-export function ProfileUser({ session }: { session: Session }) {
+type User = {
+  id: string;
+  name: string;
+  lastname: string;
+  courseName: string;
+  
+};
+
+type RootStackParamList = {
+  UserProfile: { user: User };
+};
+
+type UserProfileScreenRouteProp = RouteProp<RootStackParamList, 'UserProfile'>;
+
+type Props = {
+  route: UserProfileScreenRouteProp;
+};
+
+
+export function UserProfile({ route }: Props) {
   const navigation = useNavigation<StackTypes>()
   // const [fontsLoaded, fontsError] = useFonts({Poppins_700Bold, Poppins_400Regular, Poppins_500Medium})
   const [menuAtivo, setMenuAtivo] = useState('atividades');
@@ -25,43 +43,10 @@ export function ProfileUser({ session }: { session: Session }) {
   const [loading, setLoading] = useState(true)
   const [name, setName] = useState('')
   const [lastname, setLastname] = useState('')
+
   
-
-  useEffect(() => {
-    if (session) getProfile()
-  }, [session])
-
-  async function getProfile() {
-    try {
-      setLoading(true)
-      if (!session?.user) throw new Error('No user on the session!')
-
-      const { data, error, status } = await supabase
-        .from('users')
-        .select(`name, lastname`)
-        .eq('uid', session?.user.id)
-        .single()
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setName(data.name)
-        setLastname(data.lastname)
-      }
-    } catch (error) {
-      if (error instanceof Error) {
-        Alert.alert(error.message)
-      }
-    } finally {
-      setLoading(false)
-    }
-  }
-
-
-
-
-
+  const { user } = route.params;
+  
 
   const [cursoInfo, setCursoInfo] = useState<{
     curso: string;
@@ -150,7 +135,6 @@ export function ProfileUser({ session }: { session: Session }) {
             </View>
           );
 
-        
       case 'sobre':
         return (
           <View style={stylesProfile.containerSobre}>
@@ -181,7 +165,7 @@ export function ProfileUser({ session }: { session: Session }) {
       <View style={stylesProfile.containerPrincipal}>
 
           <View style={stylesProfile.containerNav}>
-            <TouchableOpacity style={stylesProfile.buttonback} onPress={() => supabase.auth.signOut()}>
+            <TouchableOpacity style={stylesProfile.buttonback} onPress={() => navigation.goBack()}>
               <Icon name='arrowleft' size={30} style={{fontWeight:'bold'}} />
               <Text style={stylesProfile.textback}>Voltar</Text>
             </TouchableOpacity>
@@ -195,16 +179,23 @@ export function ProfileUser({ session }: { session: Session }) {
                 </View>
 
                 <View style={stylesProfile.perfilUsuarioInfo}>
-                  <Text style={stylesProfile.infoNome}>{name} {lastname}</Text>
-                  <Text style={stylesProfile.infoCurso}>Técnico em Informática</Text>
+                  <Text style={stylesProfile.infoNome}>{user.name} {user.lastname}</Text>
+                  <Text style={stylesProfile.infoCurso}>{user.courseName}</Text>
                 </View>
 
+                <View style={stylesProfile.buttonsProfile}>
                 <TouchableOpacity style={stylesProfile.ButtonEditar}>
-                  <View style={stylesProfile.PerfilUsuarioButtonEditar}>
-                      <Text style={stylesProfile.textBtn}>Editar Perfil</Text>
+                  <View style={stylesProfile.PerfilUsuarioButton}>
+                      <Text style={stylesProfile.textBtn}>Seguir</Text>
                   </View>
                 </TouchableOpacity>
 
+                <TouchableOpacity style={stylesProfile.ButtonEditar}>
+                  <View style={stylesProfile.PerfilUsuarioButton}>
+                      <Text style={stylesProfile.textBtn}>Mensagem</Text>
+                  </View>
+                </TouchableOpacity>
+                </View>
             </View>
 
             <View style={stylesProfile.containerPerfilInfoStats}>
@@ -217,7 +208,7 @@ export function ProfileUser({ session }: { session: Session }) {
                 </View>
               </TouchableOpacity>
               
-              <TouchableOpacity style={stylesProfile.perfilInfoStats} onPress={() => setMenuAtivo('seguidores')}>
+              <TouchableOpacity style={stylesProfile.perfilInfoStats}>
                 <View style={stylesProfile.NumeradorStats}>
                   <Text style={stylesProfile.quantidadePessoas}>257</Text>
                 </View>
@@ -235,32 +226,6 @@ export function ProfileUser({ session }: { session: Session }) {
                 </View>
               </TouchableOpacity>
 
-            </View>
-
-            <View style={stylesProfile.containerPerfilMenu}>
-              <TouchableOpacity style={stylesProfile.menuPerfil} onPress={() => setMenuAtivo('atividades')} >
-                <View>
-                  <Text style={stylesProfile.text3}>Atividades</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={stylesProfile.menuPerfil} onPress={() => setMenuAtivo('publicacoes')}>
-                <View>
-                  <Text style={stylesProfile.text3}>Publicações</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={stylesProfile.menuPerfil} onPress={() => setMenuAtivo('cursos')}>
-                <View>
-                  <Text style={stylesProfile.text3}>Cursos</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity style={stylesProfile.menuPerfil} onPress={() => setMenuAtivo('sobre')}>
-                <View>
-                  <Text style={stylesProfile.text3}>Sobre</Text> 
-                </View>
-              </TouchableOpacity>
             </View>
             
           </View>

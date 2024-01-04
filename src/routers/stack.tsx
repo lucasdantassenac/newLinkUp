@@ -14,9 +14,18 @@ import { EditarCurso } from '../screens/profileUser/editarCurso';
 import { AdicionarCurso } from '../screens/profileUser/adicionarCurso';
 import { EditarSobre } from '../screens/profileUser/editarSobre';
 import { ProfileUser } from '../screens/profileUser';
+import { Teste } from '../screens/teste';
+import  { UserProfile  } from '../screens/userProfile';
 import { Interesses } from '../screens/cadastro/interesses';
 
+
 const Stack = createNativeStackNavigator();
+
+type User = {
+  id: string;
+  name: string;
+  
+};
 
 type Stacknavigation = {
     Cadastro: undefined,
@@ -29,7 +38,10 @@ type Stacknavigation = {
     AdicionarCurso: undefined,
     EditarSobre: undefined,
     ProfileUser: undefined,
+    Teste: undefined,
+    UserProfile: { user: User };
     Interesses: undefined,
+
 }
 
 export type StackTypes = NativeStackNavigationProp<Stacknavigation>
@@ -38,7 +50,9 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="FriendsList" component={FriendList} />
+        <Stack.Screen name="Teste" component={Teste} />
+        <Stack.Screen name="FriendList" component={FriendList} />
+        <Stack.Screen name="UserProfile" component={UserProfile} /> 
         <Stack.Screen name="ProfileUser" component={ProfileUser}  />
         <Stack.Screen name="EditarSobre" component={EditarSobre}  />
         <Stack.Screen name="AdicionarCurso" component={AdicionarCurso}  />
@@ -52,9 +66,8 @@ export default function StackComponent() {
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
         <Stack.Screen name="ChatScreen" component={ChatScreen} />
-        
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  );  
 }
 
