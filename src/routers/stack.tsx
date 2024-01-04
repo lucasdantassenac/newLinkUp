@@ -18,7 +18,6 @@ import  { UserProfile  } from '../screens/userProfile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather} from '@expo/vector-icons';
 import { Session } from '@supabase/supabase-js';
-import  { Teste  }  from '../screens/teste';
 
 
 
@@ -49,10 +48,8 @@ type Stacknavigation = {
     UserProfile: { user: User },
     InitialScreen: undefined,
     Interesses: undefined,
-    Teste: undefined,
     Postagem: undefined,
-
-
+}
 export type StackTypes = NativeStackNavigationProp<Stacknavigation>
 
 const Tab = createBottomTabNavigator();
@@ -103,10 +100,8 @@ export default function StackComponent() {
   return (
       <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-
         <Stack.Screen name="InitialScreen" component={InitialScreen} />
         <Stack.Screen name="Postagem" component={Postagem}  />
-        <Stack.Screen name="Teste" component={Teste} />
         <Stack.Screen name="FriendList" component={FriendList} />
         <Stack.Screen name="UserProfile" component={UserProfile} /> 
         <Stack.Screen name="ProfileUser" component={ProfileUser}  />
@@ -118,13 +113,8 @@ export default function StackComponent() {
         <Stack.Screen name="Interesses" component={Interesses}  />
         <Stack.Screen name="FirstRegister" component={ConsultaMatricula}  />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={InitialScreen}  />
         <Stack.Screen name="Cadastro" component={Cadastro} />
-        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="TabRoutes" component={TabRoutes} />
-
-       
-        
       </Stack.Navigator>
       </NavigationContainer>
     
