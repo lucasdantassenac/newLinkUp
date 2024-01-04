@@ -8,9 +8,11 @@ import { SafeAreaView, StatusBar, View, Text, StyleSheet, Button, TouchableOpaci
 import { Session } from '@supabase/supabase-js'
 import { ThemeProvider } from 'styled-components'
 import { useFonts, Poppins_700Bold, Poppins_400Regular, Poppins_500Medium } from '@expo-google-fonts/poppins';
-import theme from '../../theme'
+import { theme }from '../../theme'
 import { ChatScreen } from '../chatScreen'
 import {ProfileUser} from '../profileUser'
+import { Feed } from '../feed'
+import{ TabRoutes } from "../../routers/stack";
 
 
 export function Login() {
@@ -33,7 +35,7 @@ export function Login() {
   }else{
     return (
       <View style={styles.container}>
-        {session && session.user ?  <ProfileUser key={session.user.id} session={session} /> : <Auth /> }
+        {session && session.user ?  <TabRoutes key={session.user.id} session={session} /> : <Auth /> }
 
         </View>
       

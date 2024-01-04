@@ -76,7 +76,7 @@ export  function ConfigureProfile ()  {
       {/*             Conta           */}
       <View style = {styles.account}> 
         { account.map((conta) => (
-          <Text style = {styles.account}> {conta.account} </Text>
+          <Text style = {styles.account} key={conta.id}> {conta.account} </Text>
         ))}  
       </View>
      <View>
