@@ -1,9 +1,6 @@
-import StackComponent from "./src/routers/stack";
-import ConsultaMatricula from "./src/screens/consulta_matricula";
-import {Text} from 'react-native'
+import React from "react";
+import Routes from "./src/routers";
 export default function App() {
-  return (
-    <StackComponent/>
-  );
+  return <Routes/>;
 }
 

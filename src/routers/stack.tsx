@@ -16,7 +16,7 @@ import { EditarSobre } from '../screens/profileUser/editarSobre';
 import { ProfileUser } from '../screens/profileUser';
 import { Teste } from '../screens/teste';
 import  { UserProfile  } from '../screens/userProfile';
-
+import { Interesses } from '../screens/cadastro/interesses';
 
 
 const Stack = createNativeStackNavigator();
@@ -40,7 +40,8 @@ type Stacknavigation = {
     ProfileUser: undefined,
     Teste: undefined,
     UserProfile: { user: User };
-    
+    Interesses: undefined,
+
 }
 
 export type StackTypes = NativeStackNavigationProp<Stacknavigation>
@@ -50,26 +51,23 @@ export default function StackComponent() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Teste" component={Teste} />
-        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="FriendList" component={FriendList} />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="UserProfile" component={UserProfile} /> 
         <Stack.Screen name="ProfileUser" component={ProfileUser}  />
-        <Stack.Screen name="Home" component={InitialScreen}  />
+        <Stack.Screen name="EditarSobre" component={EditarSobre}  />
+        <Stack.Screen name="AdicionarCurso" component={AdicionarCurso}  />
+        <Stack.Screen name="EditarCurso" component={EditarCurso} />
         <Stack.Screen name="Configuracoes" component={ConfigureProfile} />
+        <Stack.Screen name="Feed" component={Feed}  />
+        <Stack.Screen name="Interesses" component={Interesses}  />
+        <Stack.Screen name="FirstRegister" component={ConsultaMatricula}  />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Home" component={InitialScreen}  />
+        <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="ConsultaMatricula" component={ConsultaMatricula}  />
         <Stack.Screen name="ChatScreen" component={ChatScreen} />
-        <Stack.Screen name="EditarCurso" component={EditarCurso} />
-        <Stack.Screen name="Feed" component={Feed}  />
-        <Stack.Screen name="AdicionarCurso" component={AdicionarCurso}  />
-        <Stack.Screen name="EditarSobre" component={EditarSobre}  />
-       
-        
       </Stack.Navigator>
     </NavigationContainer>
-
-    
-  );
-  
+  );  
 }
 
