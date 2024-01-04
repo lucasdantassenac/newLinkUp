@@ -17,6 +17,7 @@ import { ProfileUser } from '../screens/profileUser';
 import { Teste } from '../screens/teste';
 import  { UserProfile  } from '../screens/userProfile';
 import { Interesses } from '../screens/cadastro/interesses';
+import { Postagem } from '../screens/postagem';
 
 
 const Stack = createNativeStackNavigator();
@@ -41,8 +42,9 @@ type Stacknavigation = {
     Teste: undefined,
     UserProfile: { user: User };
     Interesses: undefined,
+    Postagem: undefined,
+ }
 
-}
 
 export type StackTypes = NativeStackNavigationProp<Stacknavigation>
 
@@ -50,6 +52,7 @@ export default function StackComponent() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Postagem" component={Postagem}  />
         <Stack.Screen name="Teste" component={Teste} />
         <Stack.Screen name="FriendList" component={FriendList} />
         <Stack.Screen name="UserProfile" component={UserProfile} /> 
