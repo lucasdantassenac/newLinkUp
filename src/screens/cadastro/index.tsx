@@ -120,7 +120,7 @@ export default function Cadastro() {
         </View>
         <View style={styles.areainput}>
           <View style={styles.back}>
-                <TouchableOpacity style={styles.buttonback} onPress={()=>{navigation.navigate('ConsultaMatricula');}}>
+                <TouchableOpacity style={styles.buttonback} onPress={()=>{navigation.goBack();}}>
                   <Icon name='arrowleft' size={30} style={{fontWeight:'bold'}} />
                   <Text style={styles.textback}>Voltar</Text>
                 </TouchableOpacity>
