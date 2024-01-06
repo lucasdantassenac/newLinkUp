@@ -19,6 +19,16 @@ const myButtons = StyleSheet.create({
         width: 110,
         marginLeft: 'auto',
       },
+      
+      buttonDefault:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 50,
+        height: 40,
+        width: 110,
+        marginLeft: 'auto',
+        backgroundColor: myColors.padraoBackground3.backgroundColor,
+      }
 
 });
 

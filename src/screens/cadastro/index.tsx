@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Alert, Button} from 'react-native';
+import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, ScrollView, Alert, Button} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../routers/stack';
-import { styles } from './styles'
+import { styles } from './stylesCadastro'
 import { supabase } from '../../lib/supabase'
 import { Session } from '@supabase/supabase-js'
 import {Picker} from '@react-native-picker/picker';
-
+import navigatorBar from './../../components/stylesGlobal/navigatorBar';
+import viewColor from '../../components/stylesGlobal/myColors';
+import myInputs from '../../components/stylesGlobal/inputs';
+import myButtons from '../../components/stylesGlobal/myButtons';
+import myPrincipalContainer from '../../components/stylesGlobal/myPrincipalContainer';
+import myStatusBar from '../../components/stylesGlobal/statusBarProgress';
+import StyleDesenho from './StyleDesenho';
 
 export default function Cadastro() {
     
@@ -58,11 +63,6 @@ export default function Cadastro() {
       }
     }
 
-    
-
-
-
-  
     const handleInputChange = (texto: string) => {
 
       setTextoInput(texto);
@@ -111,76 +111,92 @@ export default function Cadastro() {
     }
 
   return (
-    <View style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 10}}>
-          <View style={{backgroundColor: '#5d5d5d', borderRadius: 30, height: 7, width: 85, marginRight: 7}}><Text></Text></View>
+
+
+  <View>
+    <StyleDesenho/>
+
+      <View style={myPrincipalContainer.containerPrincipalCadastro}>
+
+        <View style={myStatusBar.statusBarProgress}>
+          <View style={{backgroundColor: '#4FC5C5', borderRadius: 30, height: 7, width: 85, marginRight: 7}}><Text></Text></View>
           <View style={{backgroundColor: '#d9d9d9', borderRadius: 30, height: 7, width: 85, marginRight: 7}}><Text></Text></View>
           <View style={{backgroundColor: '#d9d9d9', borderRadius: 30, height: 7, width: 85, marginRight: 7}}><Text></Text></View>
         </View>
-        <View style={styles.areainput}>
-          <View style={styles.back}>
-                <TouchableOpacity style={styles.buttonback} onPress={()=>{navigation.navigate('ConsultaMatricula');}}>
-                  <Icon name='arrowleft' size={30} style={{fontWeight:'bold'}} />
-                  <Text style={styles.textback}>Voltar</Text>
-                </TouchableOpacity>
-                <StatusBar style="auto" />
+
+        <View style={navigatorBar.containerNav}>
+          <TouchableOpacity style={navigatorBar.buttonback} onPress={() => navigation.navigate('ProfileUser')}>
+            <Icon name='arrowleft' size={30} style={{fontWeight:'bold', color: viewColor.padraoText2.color}} />
+            <Text style={navigatorBar.textback2}>Voltar</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={myPrincipalContainer.subcontainerPrincipal}>
+          
+          <View style={styles.containerTitulo}>
+            <Text style={styles.cadastroTitulo}>Cadastro</Text>
           </View>
-          <View style={styles.teste}>
-              <Text style={styles.cadastrotext}>Cadastro</Text>
-              <Text style={styles.inputtext}>Nome</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setName(text)} value={name}/>
-              <Text style={styles.inputtext}>Sobrenome</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setLastname(text)} value={lastname}/>
-              <Text style={styles.inputtext}>Nome do Curso</Text>
-                  <View style={styles.inputPicker}>
-                    <Picker 
-                    
-                      style={styles.picker}
-                      selectedValue={courseNameSelected}
-                      onValueChange={(itemValue) =>  setCourseNameSelected(itemValue)}
-                    >
-                        {Array.isArray(courseName) && courseName.map((course, index)=> (
-                       
-                        <Picker.Item label={course}  value={course} key={index.toString()} />
-                        
-                        
-                        ))}
-                    </Picker>
-                  </View>
 
+          <View style={myInputs.containerPrincipalInputs}>
+            
+            <View style={myInputs.containerInput}>
+              <Text style={myInputs.textInput}>Nome</Text>
+              <TextInput style={myInputs.input} onChangeText={(text) => setName(text)} value={name}/>
+            </View>
 
+            <View style={myInputs.containerInput}>
+              <Text style={myInputs.textInput}>Sobrenome</Text>
+              <TextInput style={myInputs.input} onChangeText={(text) => setLastname(text)} value={lastname}/>
+            </View>
 
+            <View style={myInputs.containerInput}>
+              <Text style={myInputs.textInput}>Nome do Curso</Text>
+              <View style={myInputs.inputPicker}>
+                <Picker 
+                  style={myInputs.picker}
+                  selectedValue={courseNameSelected}
+                  onValueChange={(itemValue) =>  setCourseNameSelected(itemValue)}
+                  >
+                  {Array.isArray(courseName) && courseName.map((course, index)=> (
+                  <Picker.Item label={course}  value={course} key={index.toString()} />
+                    ))}
+                </Picker>
+              </View>
+            </View>
 
-              <Text style={styles.inputtext}>E-mail</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setEmail(text)} value={email}/>
-              <Text style={styles.inputtext}>Senha</Text>
-              <TextInput style={styles.matriculaoucpf} onChangeText={(text) => setPassword(text)} value={password}/>
+            <View style={myInputs.containerInput}>
+              <Text style={myInputs.textInput}>E-mail</Text>
+              <TextInput style={myInputs.input} onChangeText={(text) => setEmail(text)} value={email}/>
+            </View>
+
+            <View style={myInputs.containerInput}>
+              <Text style={myInputs.textInput}>Senha</Text>
+              <TextInput style={myInputs.input} onChangeText={(text) => setPassword(text)} value={password}/>
+            </View>
               
           </View>
 
-          <TouchableOpacity 
-            style={
-                styles.button 
-            } 
-            disabled={
-              loading
-            } 
-            onPress={() => signUpWithEmail()}>
-              <Text style={styles.avancar}>Avançar</Text>
-          </TouchableOpacity>
-
-        
-
-          
-        
+          <View style={myButtons.containerButton}>
+              <TouchableOpacity 
+                style={
+                  [
+                    myButtons.buttonDefault, 
+                  ]
+                } 
+                disabled={
+                  loading
+                } 
+                onPress={() => signUpWithEmail()}>
+                  <Text style={styles.avancar}>Avançar</Text>
+              </TouchableOpacity>
+          </View>
 
         </View>
 
-      </ScrollView>
+      </View>
+      <StatusBar backgroundColor='#215151'/>     
+  </View>  
 
-    </View>
-    
   );
 }
 

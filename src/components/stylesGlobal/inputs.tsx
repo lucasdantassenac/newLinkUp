@@ -26,6 +26,25 @@ const myInputs = StyleSheet.create({
             backgroundColor: myColors.padraoBackground6.backgroundColor,
             },
 
+            inputPicker:{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 45,
+                width: '100%',
+                borderColor: '#D9D9D9',
+                borderWidth: 1,
+                borderRadius: 30,
+                color:'#5E5E5E',
+                backgroundColor: myColors.padraoBackground6.backgroundColor,
+            },
+
+            picker:{
+                height: 'auto',
+                width: '100%',
+                color:'#5E5E5E',
+            },
+
 });
 
 export default myInputs;
