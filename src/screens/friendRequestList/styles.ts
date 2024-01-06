@@ -104,6 +104,10 @@ export const styles = StyleSheet.create({
       height: 50,
       borderRadius: 25,
     },
+    friendNameContainer:{
+      display:'flex',
+      flexDirection:'row'
+    },
     friendName: {
       color: theme.COLORS.GRAY_700, 
       fontSize: 16,

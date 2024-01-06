@@ -18,7 +18,7 @@ import { supabase } from '../../lib/supabase';
 import { Session } from '@supabase/supabase-js';
 
 type FriendRequest = {
-  uid: number;
+  uid: string;
   name: string;
   lastName:string;
   courseName: string;
@@ -68,7 +68,7 @@ export const FriendList: React.FC = () => {
         // Se os dados forem encontrados, atualize o estado friendRequests
         if (data) {
           const users = data.map((user: any) => ({
-            uid: user.id,
+            uid: user.uid,
             name: user.name,
             lastName: user.lastname,
             courseName:user.courseName,
@@ -179,14 +179,30 @@ export const FriendList: React.FC = () => {
     fetchUsersByName(text);
   };
 
-  const acceptFriendRequest = (friendRequestId: number) => {
-    setFriendRequests((prevState) => {
-      return prevState.filter((item) => item.uid !== friendRequestId);
-    });
+  const acceptFriendRequest = (friendRequestId: string) => {
+    const acceptFriend = async () => {
+      console.log(friendRequestId)
+      const { data, error } = await supabase
+        .from('friendsList')
+        .insert([{ userId: session?.user.id, friendId: friendRequestId }]);
+  
+      if (error) {
+        console.error('Erro ao adicionar amigo:', error);
+        return;
+      }
+
+      setFriendRequests((prevState) => {
+        return prevState.filter((item) => item.uid !== friendRequestId);
+      });
+      console.log('Amigo adicionado com sucesso:', data);
+      // Faça outras ações após adicionar o amigo, se necessário
+    };
+    acceptFriend()
+   
     Alert.alert('Amizade aceita!');
   };
 
-  const rejectFriendRequest = (friendRequestId: number) => {
+  const rejectFriendRequest = (friendRequestId: string) => {
     setFriendRequests((prevState) => {
       return prevState.filter((item) => item.uid !== friendRequestId);
     });
@@ -197,7 +213,10 @@ export const FriendList: React.FC = () => {
     <View style={styles.itemContainer}>
       <Image style={styles.profilePic} source={{ uri: item.photobase64 || defaultUserImageBase64 }} />
       <View style={styles.textContainer}>
-        <Text style={styles.friendName}>{item.name}</Text>
+        <View style={styles.friendNameContainer}>
+          <Text style={styles.friendName}>{item.name} </Text>
+          <Text style={styles.friendName}>{item.lastName}</Text>
+        </View>
         <Text style={styles.friendCourse}>{item.courseName}</Text>
       </View>
       <View style={styles.itemButtonContainer}>
