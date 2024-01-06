@@ -24,6 +24,7 @@ type FriendRequest = {
   courseName: string;
   courseId:number;
   photobase64: string;
+  isSuggestion?:boolean;
 };
 type Interest = {
   id:number, 
@@ -109,23 +110,20 @@ export const FriendList: React.FC = () => {
   useEffect(() => {
     const fetchFriendRequests = async () => {
       try {
-        if(session){
-          const { data: friendList, error: friendListError } = await supabase
-          .from('friendsList')
-          .select('friendId')
-          .eq('userId', session.user.id);
+        const { data: friendList, error: friendListError } = await supabase
+        .from('friendsList')
+        .select('friendId')
+        .eq('userId', session?.user.id);
 
-          if (friendListError) {
-            throw friendListError;
-          }
-          console.log(friendList)
+        if (friendListError) {
+          throw friendListError;
         }
+        const friendsId = friendList.map((friend:any) => friend.friendId)
         
-        // Faça a consulta para buscar os dados da tabela no Supabase
         const { data, error } = await supabase
           .from('users')
           .select()
-          
+          .not('uid', 'in', "("+friendsId+")")
 
         if (error) {
           throw error;
@@ -139,7 +137,8 @@ export const FriendList: React.FC = () => {
             lastName: user.lastname,
             courseName:user.courseName,
             courseId:user.courseId,
-            photobase64: user.photobase64
+            photobase64: user.photobase64,
+            isSuggestion:true
           }));
           setFriendRequests(users);
         }
@@ -150,7 +149,6 @@ export const FriendList: React.FC = () => {
 
     // Chame a função para buscar os dados ao montar o componente
     fetchFriendRequests();
-    console.log('friendequest', friendRequests)
   }, [session]);
 
   useEffect(() => {
@@ -180,7 +178,6 @@ export const FriendList: React.FC = () => {
 
     // Chama a função para buscar os cursos quando o componente é montado
     fetchCourses();
-    console.log(interests)
   }, [])
 
  
@@ -258,17 +255,19 @@ export const FriendList: React.FC = () => {
       </View>
       <View style={styles.itemButtonContainer}>
         <TouchableOpacity
-          style={[styles.button, styles.acceptButton]}
+          style={!item.isSuggestion? [styles.button, styles.acceptButton]: [styles.button, styles.acceptButtonSuggestion]}
           onPress={() => acceptFriendRequest(item.uid)}
         >
           <Text style={styles.buttonText}>Adicionar</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.button, styles.rejectButton]}
-          onPress={() => rejectFriendRequest(item.uid)}
-        >
-          <Text style={styles.rejectButtonText}>Rejeitar</Text>
-        </TouchableOpacity>
+        {!item.isSuggestion &&
+          <TouchableOpacity
+            style={[styles.button, styles.rejectButton]}
+            onPress={() => rejectFriendRequest(item.uid)}
+          >
+            <Text style={styles.rejectButtonText}>Rejeitar</Text>
+          </TouchableOpacity>
+        }
       </View>
     </View>
   );
