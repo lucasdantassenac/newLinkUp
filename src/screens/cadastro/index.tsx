@@ -187,7 +187,7 @@ export default function Cadastro() {
                   loading
                 } 
                 onPress={() => signUpWithEmail()}>
-                  <Text style={styles.avancar}>Avançar</Text>
+                  <Text style={styles.avancar}>AvanÃ§ar</Text>
               </TouchableOpacity>
           </View>
 
