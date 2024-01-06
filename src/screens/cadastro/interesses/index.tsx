@@ -10,6 +10,7 @@ import { StackTypes } from '../../../routers/stack';
 import data from './db.json';
 import StyleDesenho from './StyleDesenho';
 import { color } from 'react-native-elements/dist/helpers';
+import myPrincipalContainer from '../../../components/stylesGlobal/myPrincipalContainer';
 
 
 export function Interesses() {
@@ -34,7 +35,7 @@ useEffect(() => {
     <ScrollView>
       <StyleDesenho/>
 
-        <View style={stylesInteresses.containerPrincipal}>
+        <View style={myPrincipalContainer.containerPrincipal}>
 
           <View style={stylesInteresses.statusBarraProgresso}>
             <View style={{backgroundColor: '#4FC5C5', borderRadius: 30, height: 7, width: 85, marginRight: 7}}><Text></Text></View>
@@ -86,7 +87,7 @@ useEffect(() => {
 
         </View>
       
-        <StatusBar backgroundColor='#215151'/>
+        <StatusBar backgroundColor='transparent' translucent barStyle={'light-content'}/>
       
     </ScrollView>
   );

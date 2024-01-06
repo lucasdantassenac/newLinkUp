@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
+import myDimensions from '../../../components/stylesGlobal/myDimensions';
 
 const StyleDesenho = () => {
   return (
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     container: {
     overflow: 'hidden',
     position: 'relative',
-    height: 843,
+    height: myDimensions.myConfig.height,
     backgroundColor: '#0B7171',
 },
   svg: {

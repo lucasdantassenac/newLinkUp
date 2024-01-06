@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
 import myColors from '../../components/stylesGlobal/myColors';
+import {Dimensions} from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const myPrincipalContainer = StyleSheet.create({
 
@@ -16,7 +19,7 @@ const myPrincipalContainer = StyleSheet.create({
 
     containerPrincipalCadastro: {
         flex: 1,
-        height: 863,
+        height: windowHeight,
         padding:10,
         top: 0,
         left: 0,
