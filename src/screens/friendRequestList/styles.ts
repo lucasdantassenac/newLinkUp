@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     spacingContainer:{
       marginHorizontal:10,
       marginVertical:20,
+
     },
     searchBar: {
       backgroundColor: '#fff', 
@@ -59,7 +60,7 @@ export const styles = StyleSheet.create({
       marginBottom:30,
     },
     flatList:{
-      height:'100%'
+      height:'100%',
     },
     listContent: {
       paddingHorizontal: 0,
