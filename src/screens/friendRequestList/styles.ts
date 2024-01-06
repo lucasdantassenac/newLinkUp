@@ -73,6 +73,7 @@ export const styles = StyleSheet.create({
     interestTitle:{
       color:theme.COLORS.GRAY_700,
       fontSize:theme.FONT_SIZE.LG,
+      paddingRight:12
     },
     seeAllContainer:{
       flexDirection:'row',
@@ -106,7 +107,7 @@ export const styles = StyleSheet.create({
     },
     friendNameContainer:{
       display:'flex',
-      flexDirection:'row'
+      flexDirection:'row',
     },
     friendName: {
       color: theme.COLORS.GRAY_700, 
@@ -115,6 +116,7 @@ export const styles = StyleSheet.create({
     friendCourse:{
       color: theme.COLORS.GRAY_300, 
       fontSize: 16,
+      paddingRight:16
     },
     itemButtonContainer: {
       flexDirection: 'column',
@@ -129,6 +131,10 @@ export const styles = StyleSheet.create({
     },
     acceptButton: {
       backgroundColor: theme.COLORS.GRAY_700
+    },
+    acceptButtonSuggestion: {
+      backgroundColor: theme.COLORS.GRAY_700,
+      paddingVertical:10
     },
     rejectButton: {
       backgroundCOlor:theme.COLORS.WHITE,
