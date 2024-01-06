@@ -10,7 +10,7 @@ const myButtons = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
       },
-  
+ 
       button: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -28,7 +28,17 @@ const myButtons = StyleSheet.create({
         width: 110,
         marginLeft: 'auto',
         backgroundColor: myColors.padraoBackground3.backgroundColor,
-      }
+      },
+
+      buttonLogin:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 50,
+        height: 40,
+        width: '100%',
+        marginLeft: 'auto',
+        backgroundColor: myColors.padraoBackground3.backgroundColor,
+      },
 
 });
 
