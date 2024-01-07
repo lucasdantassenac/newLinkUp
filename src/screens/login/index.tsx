@@ -36,8 +36,7 @@ export function Login() {
     return (
       <View style={styles.container}>
         {session && session.user ?  <TabRoutes key={session.user.id} session={session} /> : <Auth /> }
-
-        </View>
+      </View>
       
     )
   }

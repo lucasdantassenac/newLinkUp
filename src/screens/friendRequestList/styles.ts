@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     spacingContainer:{
       marginHorizontal:10,
       marginVertical:20,
-
     },
     searchBar: {
       backgroundColor: '#fff', 
@@ -77,7 +76,7 @@ export const styles = StyleSheet.create({
     },
     seeAllContainer:{
       flexDirection:'row',
-      justifyContent:'space-between'
+      justifyContent:'space-between',
       
     },
     peopleYouMayKnowText:{
@@ -130,7 +129,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     acceptButton: {
-      backgroundColor: theme.COLORS.GRAY_700
+      backgroundColor: theme.COLORS.GRAY_700,
     },
     acceptButtonSuggestion: {
       backgroundColor: theme.COLORS.GRAY_700,
