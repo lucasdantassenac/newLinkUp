@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View ,Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View ,Image, Icon } from 'react-native';
  import { styles } from './styles';
 import { useState } from 'react';
-
-
+import { Feather} from '@expo/vector-icons';
 
 
 export  function ConfigureProfile ()  {
@@ -62,6 +61,7 @@ export  function ConfigureProfile ()  {
     {profile.map((foto) => (
 
     <TouchableOpacity style = {styles.backButon}>
+          
         <Text style = {styles.backText}> {foto.back} </Text>
     </TouchableOpacity>
     
@@ -104,15 +104,18 @@ export  function ConfigureProfile ()  {
       { account.map((conta) => (
         
         <Text style = {styles.account}> {conta.account} </Text>
-      ))}  
+        
+     ))}  
     </View>
     
+     
      <View>
       {botton.map((botao) => (
      <TouchableOpacity style = {styles.button} key={botao.id} >
-             
-             <Text style = {styles.buttonText1}> {botao.texto} </Text>
-        </TouchableOpacity>
+        
+          <Text style = {styles.buttonText1}> {botao.texto} </Text>
+          
+     </TouchableOpacity>
       ))}
     
     </View>
