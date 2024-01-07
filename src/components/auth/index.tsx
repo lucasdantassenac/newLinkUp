@@ -59,7 +59,7 @@ export default function Auth() {
     <View style={myPrincipalContainer.containerPrincipalCadastro}>
 
       <View style={navigatorBar.containerNav}>
-          <TouchableOpacity style={navigatorBar.buttonback} onPress={() => navigation.navigate('ProfileUser')}>
+          <TouchableOpacity style={navigatorBar.buttonback} onPress={() => navigation.goBack()}>
             <Icon name='arrowleft' size={30} style={{fontWeight:'bold', color: viewColor.padraoText2.color}} />
             <Text style={navigatorBar.textback2}>Voltar</Text>
           </TouchableOpacity>
