@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Alert, View, Text, TouchableOpacity, Touchable, TextInput } from 'react-native'
+import { Alert, View, Text, StatusBar, TouchableOpacity, Touchable, TextInput } from 'react-native'
 import { supabase } from '../../lib/supabase'
 import { Button, Input } from 'react-native-elements'
-import { StatusBar } from 'expo-status-bar';
 import { styles } from './styles'
 import AntDesignIcon from 'react-native-vector-icons/AntDesign'
 import EntypoIcon from 'react-native-vector-icons/Entypo'
@@ -113,7 +112,9 @@ export default function Auth() {
       </View>
 
     </View>
-    <StatusBar backgroundColor='#215151'/>
+
+    <StatusBar backgroundColor='transparent' translucent barStyle={'light-content'}/>
+
 </View>
   )
 }

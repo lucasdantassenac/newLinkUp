@@ -1,18 +1,7 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { Poppins_900Black } from '@expo-google-fonts/poppins';
-
+import myDimensions from '../../../components/stylesGlobal/myDimensions';
 const viewInteresses = StyleSheet.create({
-
-  containerPrincipal: {
-    flex: 1,
-    height: 'auto',
-    padding:10,
-    top: 0,
-    left: 0,
-    width: '100%',
-    position: 'absolute',
-    zIndex: 1,
-    },
 
   containerNav:{
     height:50,
@@ -42,6 +31,7 @@ const viewInteresses = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center',
     height: 20,
+    marginTop: 20,
   },
 
   containerPrincipalCadastro:{

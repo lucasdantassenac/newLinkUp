@@ -10,6 +10,7 @@ const myStatusBar = StyleSheet.create({
       justifyContent: 'center', 
       alignItems: 'center',
       height: 20,
+      marginTop: 20,
     },
 });
 

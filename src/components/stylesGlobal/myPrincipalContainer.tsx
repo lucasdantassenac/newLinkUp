@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
 import myColors from '../../components/stylesGlobal/myColors';
+import {Dimensions} from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const myPrincipalContainer = StyleSheet.create({
 
@@ -14,9 +17,20 @@ const myPrincipalContainer = StyleSheet.create({
         zIndex: 1,
         },
 
+    containerPrincipal2: {
+        flex: 1,
+        alignItems: 'center',
+        // backgroundColor: myColors.padraoBackground1.backgroundColor,
+        backgroundColor: '#fff',
+        width: '100%',
+        minHeight: windowHeight,
+        height: 'auto',
+        padding:10,
+        },
+
     containerPrincipalCadastro: {
         flex: 1,
-        height: 863,
+        height: windowHeight,
         padding:10,
         top: 0,
         left: 0,
@@ -31,6 +45,11 @@ const myPrincipalContainer = StyleSheet.create({
         // backgroundColor: 'tomato',
         paddingHorizontal: 20,
         marginTop: 30,
+      },
+
+      subcontainerPrincipalConteudo: {
+        width: '100%',
+        height: 'auto',
       },
 
 });

@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../../routers/stack';
 import {Picker} from '@react-native-picker/picker';
 import data from './db.json';
+import myPrincipalContainer from '../../../components/stylesGlobal/myPrincipalContainer';
 
 export function EditarSobre() {
   // const [fontsLoaded, fontsError] = useFonts({Poppins_700Bold, Poppins_400Regular, Poppins_500Medium})
@@ -16,7 +17,7 @@ export function EditarSobre() {
 
   return(
     <ScrollView>
-      <View style={stylesEditarSobre.containerPrincipal}>
+      <View style={myPrincipalContainer.containerPrincipal2}>
 
         <View style={stylesEditarSobre.containerNav}>
           <TouchableOpacity style={stylesEditarSobre.buttonback} onPress={() => navigation.navigate('ProfileUser')}>
@@ -25,7 +26,7 @@ export function EditarSobre() {
           </TouchableOpacity>
         </View>
 
-        <View style={stylesEditarSobre.containerPrincipalEditarSobre}>
+        <View style={myPrincipalContainer.subcontainerPrincipalConteudo}>
 
           <View style={stylesEditarSobre.containerEditarSobreTitulo}>
             <Text style={stylesEditarSobre.sobreTitulo}>Sobre</Text>
@@ -60,7 +61,7 @@ export function EditarSobre() {
           </View>
 
         </View>
-
+        <StatusBar backgroundColor='#fff' translucent barStyle={'dark-content'}/>
 
       </View>
     </ScrollView>

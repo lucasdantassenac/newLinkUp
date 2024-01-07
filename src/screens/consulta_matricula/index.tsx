@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, TextInput, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../routers/stack';
@@ -36,7 +35,6 @@ export default function ConsultaMatricula() {
             <Icon name='arrowleft' size={30} style={{fontWeight:'bold', color: viewColor.padraoText2.color}} />
             <Text style={navigatorBar.textback2}>Voltar</Text>
           </TouchableOpacity>
-          <StatusBar style="auto" />
         </View>
 
         <View style={myPrincipalContainer.subcontainerPrincipal}>
@@ -81,6 +79,7 @@ export default function ConsultaMatricula() {
           <Text style={footer.textFooter}>Copyright © 2023. Todos os direitos reservados · Privacy · Terms</Text>
         </View>
       </View>
+      <StatusBar backgroundColor='transparent' translucent barStyle={'light-content'}/>
     </View>
     
   );

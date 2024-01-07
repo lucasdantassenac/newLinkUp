@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../../routers/stack';
 import {Picker} from '@react-native-picker/picker';
 import data from './db.json';
+import myPrincipalContainer from '../../../components/stylesGlobal/myPrincipalContainer';
 
 export function AdicionarCurso() {
   // const [fontsLoaded, fontsError] = useFonts({Poppins_700Bold, Poppins_400Regular, Poppins_500Medium})
@@ -88,7 +89,7 @@ useEffect(() => {
 
   return(
     <ScrollView>
-      <View style={stylesAdicionarCurso.containerPrincipal}>
+      <View style={myPrincipalContainer.containerPrincipal2}>
 
         <View style={stylesAdicionarCurso.containerNav}>
           <TouchableOpacity style={stylesAdicionarCurso.buttonback} onPress={() => navigation.navigate('ProfileUser')}>
@@ -97,7 +98,7 @@ useEffect(() => {
           </TouchableOpacity>
         </View>
 
-        <View style={stylesAdicionarCurso.containerPrincipalAdicionarCurso}>
+        <View style={myPrincipalContainer.subcontainerPrincipalConteudo}>
 
           <View style={stylesAdicionarCurso.containerAdicionarCursoTitulo}>
             <Text style={stylesAdicionarCurso.cursoTitulo}>Adicionar Curso</Text>
@@ -244,7 +245,7 @@ useEffect(() => {
           </View>
 
         </View>
-
+        <StatusBar backgroundColor='#fff' translucent barStyle={'dark-content'}/>
 
       </View>
     </ScrollView>

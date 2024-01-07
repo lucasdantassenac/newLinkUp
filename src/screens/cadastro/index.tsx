@@ -187,14 +187,14 @@ export default function Cadastro() {
                   loading
                 } 
                 onPress={() => signUpWithEmail()}>
-                  <Text style={styles.avancar}>AvanÃ§ar</Text>
+                  <Text style={styles.avancar}>Avançar</Text>
               </TouchableOpacity>
           </View>
 
         </View>
 
       </View>
-      <StatusBar backgroundColor='#215151'/>     
+      <StatusBar backgroundColor='transparent' translucent barStyle={'light-content'}/>     
   </View>  
 
   );
