@@ -1,0 +1,16 @@
+{
+
+   "paises": [
+    { "pais": "Brasil", "value": "bra", "id": 1 }
+  ],
+   "cidades": [
+    { "cidade": "Rio de Janeiro", "value": "rj", "id": 1 },
+    { "cidade": "São Paulo", "value": "sp", "id": 2 },
+    { "cidade": "Belo Horizonte", "value": "bh", "id": 3 },
+    { "cidade": "Salvador", "value": "ba", "id": 4 },
+    { "cidade": "Fortaleza", "value": "ce", "id": 5 },
+    { "cidade": "Recife", "value": "pe", "id": 6 },
+    { "cidade": "Londrina", "value": "pr", "id": 7 }
+  ]
+
+}

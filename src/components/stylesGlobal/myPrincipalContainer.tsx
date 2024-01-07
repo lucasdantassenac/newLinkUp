@@ -17,6 +17,17 @@ const myPrincipalContainer = StyleSheet.create({
         zIndex: 1,
         },
 
+    containerPrincipal2: {
+        flex: 1,
+        alignItems: 'center',
+        // backgroundColor: myColors.padraoBackground1.backgroundColor,
+        backgroundColor: '#fff',
+        width: '100%',
+        minHeight: windowHeight,
+        height: 'auto',
+        padding:10,
+        },
+
     containerPrincipalCadastro: {
         flex: 1,
         height: windowHeight,
@@ -34,6 +45,11 @@ const myPrincipalContainer = StyleSheet.create({
         // backgroundColor: 'tomato',
         paddingHorizontal: 20,
         marginTop: 30,
+      },
+
+      subcontainerPrincipalConteudo: {
+        width: '100%',
+        height: 'auto',
       },
 
 });

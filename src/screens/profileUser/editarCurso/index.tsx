@@ -11,6 +11,7 @@ import {Picker} from '@react-native-picker/picker';
 import data from './db.json';
 import { supabase } from '../../../lib/supabase';
 import { Session } from '@supabase/supabase-js';
+import myPrincipalContainer from '../../../components/stylesGlobal/myPrincipalContainer';
 
 export function EditarCurso() {
 
@@ -99,7 +100,7 @@ useEffect(() => {
 
   return(
     <ScrollView>
-      <View style={stylesEditarCurso.containerPrincipal}>
+      <View style={myPrincipalContainer.containerPrincipal2}>
 
         <View style={stylesEditarCurso.containerNav}>
           <TouchableOpacity style={stylesEditarCurso.buttonback} onPress={() => navigation.navigate('ProfileUser')}>
@@ -108,7 +109,7 @@ useEffect(() => {
           </TouchableOpacity>
         </View>
 
-        <View style={stylesEditarCurso.containerPrincipalEditarCurso}>
+        <View style={myPrincipalContainer.subcontainerPrincipalConteudo}>
 
           <View style={stylesEditarCurso.containerEditarCursoTitulo}>
             <Text style={stylesEditarCurso.cursoTitulo}>Editar Curso</Text>
@@ -261,7 +262,7 @@ useEffect(() => {
           </View>
 
         </View>
-
+        <StatusBar backgroundColor='#fff' translucent barStyle={'dark-content'}/>
 
       </View>
     </ScrollView>
