@@ -9,7 +9,8 @@ import { EditarSobre } from '../screens/profileUser/editarSobre';
 import { Interesses } from '../screens/cadastro/interesses';
 import React from 'react';
 import ButtonNew from './ButtonNew';
-import { Postagem } from '../screens/postagem';
+import { Postagem } from '../screens/postt';
+// import { Postagem } from '../screens/postagem';
 
 
 const Tab = createBottomTabNavigator();
@@ -37,19 +38,21 @@ export default function TabRoutes(){
     
     <Tab.Screen 
     name="Novo"
-    component={EditarSobre}
-    options={{
-    tabBarLabel: '',
-        tabBarIcon: ({color , size}) => (
-        <ButtonNew  color={color} size= {size}/>
+    component={Postagem} options={{ tabBarStyle:{display: 'none' } ,tabBarIcon: ({color , size}) => ( <ButtonNew  color={color} size= {size}/>
     )
     }}
+    
+    // <Tab.Screen 
+    // name="Novo"
+    // component={Postagem} options={{ tabBarLabel: '',tabBarIcon: ({color , size}) => ( <ButtonNew  color={color} size= {size}/>
+    // )
+    // }}
     />
    
    
     <Tab.Screen 
     name="Config"
-    component={ConfigureProfile}
+    component={EditarSobre}
     options={{
         tabBarIcon: ({color , size}) => <Feather name="settings" color={color} size ={size}/>
     }}
