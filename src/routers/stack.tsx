@@ -19,7 +19,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather} from '@expo/vector-icons';
 import { Session } from '@supabase/supabase-js';
 import { Interesses } from '../screens/cadastro/interesses';
-import { Postagem } from '../screens/newPost';
+import { Postagem } from '../screens/postt';
 import ButtonNew from './ButtonNew';
 
 
