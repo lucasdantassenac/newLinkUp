@@ -21,7 +21,7 @@ export function EditarSobre() {
 
         <View style={stylesEditarSobre.containerNav}>
           <TouchableOpacity style={stylesEditarSobre.buttonback} onPress={() => navigation.navigate('ProfileUser')}>
-            <Icon name='arrowleft' size={30} style={{fontWeight:'bold'}} />
+            <Icon name='arrowleft' size={30} style={{fontWeight:'bold'}}/>
             <Text style={stylesEditarSobre.textback}>Voltar</Text>
           </TouchableOpacity>
         </View>

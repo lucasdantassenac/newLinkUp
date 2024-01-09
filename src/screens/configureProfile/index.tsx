@@ -13,7 +13,7 @@ export  function ConfigureProfile ()  {
       email: 'Gabriel Modesto',
       email2: 'Gabriel_26@outlook.com.br' ,
       config: 'Configurações' ,
-    },
+    },//test
   ] 
 
          //         Conta       //

@@ -19,7 +19,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather} from '@expo/vector-icons';
 import { Session } from '@supabase/supabase-js';
 import { Interesses } from '../screens/cadastro/interesses';
-import { Postagem } from '../screens/postagem';
+import { Postagem } from '../screens/postt';
+import ButtonNew from './ButtonNew';
 
 
 
@@ -69,7 +70,15 @@ export function TabRoutes({ session }: { session: Session }){
                 tabBarIcon: ({color , size}) => <Feather name="users" color={color} size ={size}/>
             }}
         />
-    
+
+        <Tab.Screen 
+                name="Novo"
+                component={Postagem} options={{ tabBarStyle:{display: 'none' } ,tabBarIcon: ({color , size}) => ( <ButtonNew  color={color} size= {size}/>
+                )
+                }}
+            
+            />
+
         <Tab.Screen 
             name="Configurações"
             component={ConfigureProfile}
